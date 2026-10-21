@@ -89,6 +89,10 @@
     border-radius: var(--radius-full);
 }
 
+.mobile-only-nav {
+    display: none;
+}
+
 .nav-actions {
     display: flex;
     align-items: center;
@@ -1151,6 +1155,12 @@
 }
 
 @media (max-width: 768px) {
+    .nav-auth-desktop {
+        display: none !important;
+    }
+    .mobile-only-nav {
+        display: block;
+    }
     .nav-links {
         display: none;
         position: fixed;
