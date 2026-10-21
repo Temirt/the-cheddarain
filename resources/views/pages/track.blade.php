@@ -231,9 +231,23 @@
                         <span>${{ number_format($order->tax, 2) }}</span>
                     </div>
                     <div style="display: flex; justify-content: space-between; font-size: 1.35rem; font-weight: 800; color: var(--gold-bright); padding-top: 0.75rem; border-top: 1px solid var(--border-subtle); margin-top: 0.5rem;">
-                        <span>Total Paid / Due</span>
+                        <span>Total Due</span>
                         <span>${{ number_format($order->total, 2) }}</span>
                     </div>
+                </div>
+
+                <!-- In-Person Payment Reminder Card -->
+                <div style="background: rgba(255, 153, 0, 0.1); border: 1px dashed var(--cheddar-primary); border-radius: var(--radius-md); padding: 1.1rem 1.3rem; margin-bottom: 1.5rem;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--gold-bright); font-weight: 700; font-size: 0.95rem; margin-bottom: 0.4rem;">
+                        <span>💵</span> Pay in Person With Order ID
+                    </div>
+                    <p style="font-size: 0.88rem; color: var(--text-cream-soft); margin: 0; line-height: 1.5;">
+                        @if($order->fulfillment_type === 'pickup')
+                            Bring your Order Reference <strong style="color: var(--cheddar-bright);">#{{ $order->order_reference }}</strong> to the pickup counter to pay ${{ number_format($order->total, 2) }} via Cash, Card, or Contactless.
+                        @else
+                            Present your Order Reference <strong style="color: var(--cheddar-bright);">#{{ $order->order_reference }}</strong> to your delivery courier to pay ${{ number_format($order->total, 2) }} in cash upon arrival.
+                        @endif
+                    </p>
                 </div>
 
                 @if($order->fulfillment_type === 'delivery' && $order->delivery_address)

@@ -15,7 +15,7 @@
     </p>
 
     <!-- Prominent Reference Card -->
-    <div style="background: var(--bg-card); border: 2px dashed var(--cheddar-primary); border-radius: var(--radius-xl); padding: 2.5rem; margin-bottom: 2.5rem; box-shadow: var(--shadow-lg);">
+    <div style="background: var(--bg-card); border: 2px dashed var(--cheddar-primary); border-radius: var(--radius-xl); padding: 2.5rem; margin-bottom: 2rem; box-shadow: var(--shadow-lg);">
         <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-cream-muted); margin-bottom: 0.4rem;">
             Your Unique Order Reference
         </div>
@@ -35,6 +35,37 @@
                 <span>💬</span>
                 <span>Enquire via WhatsApp</span>
             </a>
+        </div>
+    </div>
+
+    <!-- In-Person Payment Instructions -->
+    <div style="background: linear-gradient(135deg, rgba(255, 153, 0, 0.15), rgba(255, 107, 0, 0.06)); border: 2px solid var(--cheddar-primary); border-radius: var(--radius-xl); padding: 2rem; margin-bottom: 2.5rem; text-align: left; box-shadow: var(--shadow-md);">
+        <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1rem;">
+            <div style="width: 48px; height: 48px; border-radius: var(--radius-full); background: rgba(255, 153, 0, 0.2); border: 1px solid var(--cheddar-primary); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
+                💵
+            </div>
+            <div>
+                <h3 style="font-size: 1.3rem; color: var(--gold-bright); margin: 0;">Payment in Person — Bring Your Order ID</h3>
+                <span style="font-size: 0.88rem; color: var(--text-cream-muted);">No online payment required • Pay when you receive your food</span>
+            </div>
+        </div>
+
+        <div style="font-size: 0.98rem; color: var(--text-cream-soft); line-height: 1.6; background: var(--bg-surface); padding: 1.3rem 1.6rem; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle);">
+            @if($order->fulfillment_type === 'pickup')
+                <p style="margin-bottom: 0.6rem;">
+                    📍 <strong>Pickup Counter Instructions:</strong> Head to <strong>The Cheddarain</strong> pickup counter and present your Order Reference: <strong style="color: var(--cheddar-bright); font-size: 1.15rem; font-family: var(--font-heading);">#{{ $order->order_reference }}</strong>.
+                </p>
+                <p style="margin: 0;">
+                    💳 You will pay your total of <strong style="color: var(--gold-bright); font-size: 1.05rem;">${{ number_format($order->total, 2) }}</strong> at the counter using <strong>Cash, Card, or Contactless (Apple/Google Pay)</strong>.
+                </p>
+            @else
+                <p style="margin-bottom: 0.6rem;">
+                    🛵 <strong>Delivery Instructions:</strong> When your delivery courier arrives, simply present or state your Order Reference: <strong style="color: var(--cheddar-bright); font-size: 1.15rem; font-family: var(--font-heading);">#{{ $order->order_reference }}</strong>.
+                </p>
+                <p style="margin: 0;">
+                    💵 Hand the exact or approximate cash amount of <strong style="color: var(--gold-bright); font-size: 1.05rem;">${{ number_format($order->total, 2) }}</strong> directly to the delivery courier.
+                </p>
+            @endif
         </div>
     </div>
 

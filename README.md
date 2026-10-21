@@ -21,7 +21,17 @@ A complete, production-ready restaurant website for **The Cheddarain**, speciali
 - **Staff Audit Trail Log**: Every status transition records the staff member, exact timestamp, and audit notes.
 - **Direct WhatsApp Support**: One-click enquiry button pre-filled with the unique order reference (`#CHED-XXXXXX`).
 
-### 2. Luxury Fast-Casual Customer Website
+### 2. In-Person Payment Workflow (Zero Gateway Dependencies)
+- **Order ID Bring-and-Pay System**: Customers do **not** enter credit cards online.
+- When an order is submitted, the system instantly generates an **Order Reference / Order ID** (e.g. `#CHED-782901`).
+- **Pickup Orders**: Customers bring their Order ID to the restaurant counter to pay with Cash, Debit/Credit Card, or Contactless (Apple/Google Pay) upon collection.
+- **Delivery Orders**: Customers show their Order ID to the delivery courier and pay in cash upon arrival.
+
+### 3. Customer Authentication & Order History
+- **Customer Sign Up & Sign In**: Dedicated `/register` and `/login` portals for customers.
+- **Customer Dashboard (`/account`)**: Real-time view of all personal past and active orders, live status pills, one-click WhatsApp dispatch chat, and instant tracking links.
+
+### 4. Luxury Fast-Casual Customer Website
 - **Aesthetic**: Deep charcoal & black backgrounds (`#0a0b0e`, `#12141a`), vibrant cheddar-orange (`#ff9900`) and golden-yellow (`#fcbf49`) accents, cream typography (`#faf6ee`).
 - **Pages**:
   - **Home**: Hero showcase, popular meals, 3-step ordering process, verified customer reviews.
@@ -34,7 +44,7 @@ A complete, production-ready restaurant website for **The Cheddarain**, speciali
   - **Contact**: Store address, operating hours, interactive contact form, WhatsApp direct line.
   - **FAQ**: Interactive accordion covering delivery, ordering, allergens, and tracking.
 
-### 3. Protected Restaurant Staff & Admin Portal (`/admin`)
+### 5. Protected Restaurant Staff & Admin Portal (`/admin`)
 - **Secure Authentication**: Password hashing (Bcrypt), session protection, role-based access (`admin`, `staff`).
 - **Operational Dashboard**: Today's orders, revenue, pending tickets, active kitchen pipeline with one-click status transitions.
 - **Order Management**: Filter by status and date, search by reference or customer phone, view full customer notes.
@@ -150,8 +160,8 @@ If your shared hosting account forces everything into `public_html`:
 
 ## 🧪 Automated Test Suite
 
-Run the complete automated test suite verifying checkout integrity, price calculation, phone verification, and admin order transitions:
+Run the complete automated test suite verifying customer auth, checkout integrity, in-person payment calculation, phone verification, and admin order transitions:
 ```bash
 php artisan test
 ```
-Result: **13 tests passed, 103 assertions**.
+Result: **18 tests passed, 125 assertions**.

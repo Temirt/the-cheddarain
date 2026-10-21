@@ -123,38 +123,33 @@
 
                 <!-- Payment Selection -->
                 <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2rem;">
-                    <h3 style="font-size: 1.25rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; gap: 0.6rem;">
-                        <span>💳</span> 3. Payment Method
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; gap: 0.6rem;">
+                        <span>💵</span> 3. Payment Method (Pay in Person)
                     </h3>
 
+                    <div style="background: rgba(255, 153, 0, 0.12); border: 1px solid var(--border-accent); border-radius: var(--radius-md); padding: 1rem 1.2rem; margin-bottom: 1.2rem; font-size: 0.9rem; color: var(--text-cream-soft);">
+                        <strong style="color: var(--gold-bright); display: block; margin-bottom: 0.2rem;">💡 No Online Payment Required</strong>
+                        Simply submit your order to get your unique <strong>Order ID</strong>. Bring your Order ID to the restaurant counter or show it to your driver to pay in person.
+                    </div>
+
                     <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-                        <label class="option-item-row" style="padding: 1rem;">
+                        <label class="option-item-row" style="padding: 1.1rem; cursor: pointer;">
                             <div class="option-label-info">
-                                <input type="radio" name="payment_method" value="cash_on_delivery" checked id="pay_cod">
+                                <input type="radio" name="payment_method" value="payment_on_pickup" checked id="pay_pickup">
                                 <div>
-                                    <strong style="color: var(--text-cream); display: block;">Cash on Delivery</strong>
-                                    <span style="font-size: 0.82rem; color: var(--text-cream-muted);">Pay cash to driver upon arrival</span>
+                                    <strong style="color: var(--text-cream); display: block; font-size: 1rem;">Pay in Person at Counter (Pickup)</strong>
+                                    <span style="font-size: 0.82rem; color: var(--text-cream-muted);">Bring your Order ID to counter #1. Pay by Cash, Card, or Contactless in store.</span>
                                 </div>
                             </div>
-                            <span class="badge badge-cheddar">Popular</span>
+                            <span class="badge badge-cheddar">Recommended</span>
                         </label>
 
-                        <label class="option-item-row" style="padding: 1rem;">
+                        <label class="option-item-row" style="padding: 1.1rem; cursor: pointer;">
                             <div class="option-label-info">
-                                <input type="radio" name="payment_method" value="payment_on_pickup" id="pay_pickup">
+                                <input type="radio" name="payment_method" value="cash_on_delivery" id="pay_cod">
                                 <div>
-                                    <strong style="color: var(--text-cream); display: block;">Payment at Pickup Counter</strong>
-                                    <span style="font-size: 0.82rem; color: var(--text-cream-muted);">Pay by Cash, Card, or Contactless in restaurant</span>
-                                </div>
-                            </div>
-                        </label>
-
-                        <label class="option-item-row" style="padding: 1rem;">
-                            <div class="option-label-info">
-                                <input type="radio" name="payment_method" value="online_card" id="pay_card">
-                                <div>
-                                    <strong style="color: var(--text-cream); display: block;">Credit / Debit Card (Online Demo)</strong>
-                                    <span style="font-size: 0.82rem; color: var(--text-cream-muted);">Simulated secure payment gateway</span>
+                                    <strong style="color: var(--text-cream); display: block; font-size: 1rem;">Pay in Person upon Delivery (Cash on Delivery)</strong>
+                                    <span style="font-size: 0.82rem; color: var(--text-cream-muted);">Present your Order ID to the courier upon arrival and pay in cash.</span>
                                 </div>
                             </div>
                         </label>

@@ -35,7 +35,7 @@ class CheckoutController extends Controller
             'delivery_city' => 'required_if:fulfillment_type,delivery|nullable|string|max:100',
             'delivery_notes' => 'nullable|string|max:500',
             'special_instructions' => 'nullable|string|max:500',
-            'payment_method' => 'required|in:cash_on_delivery,payment_on_pickup,online_card',
+            'payment_method' => 'required|in:pay_in_person_pickup,payment_on_pickup,cash_on_delivery',
             'cart_items' => 'required|array|min:1',
             'cart_items.*.product_id' => 'required|exists:products,id',
             'cart_items.*.quantity' => 'required|integer|min:1|max:50',
@@ -124,7 +124,7 @@ class CheckoutController extends Controller
                 'total' => $total,
                 'status' => Order::STATUS_PENDING,
                 'payment_method' => $validated['payment_method'],
-                'payment_status' => ($validated['payment_method'] === 'online_card') ? 'paid' : 'pending',
+                'payment_status' => 'pending', // Paid in person when customer brings Order ID
                 'estimated_prep_minutes' => 15,
             ]);
 

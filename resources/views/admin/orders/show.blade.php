@@ -156,6 +156,16 @@
                         </span>
                     </div>
 
+                    <div>
+                        <span style="color: var(--text-cream-muted); display: block; font-size: 0.8rem; text-transform: uppercase;">Payment Details</span>
+                        <strong style="color: var(--gold-bright); font-size: 0.95rem;">
+                            Pay in Person ({{ ucwords(str_replace('_', ' ', $order->payment_method)) }})
+                        </strong>
+                        <div style="font-size: 0.82rem; color: var(--text-cream-muted); margin-top: 0.2rem;">
+                            Customer brings Order ID <strong>#{{ $order->order_reference }}</strong> to pay ${{ number_format($order->total, 2) }}
+                        </div>
+                    </div>
+
                     @if($order->fulfillment_type === 'delivery' && $order->delivery_address)
                         <div style="background: var(--bg-surface); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
                             <span style="color: var(--gold-bright); display: block; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 0.2rem;">📍 Delivery Address</span>

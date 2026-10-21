@@ -89,7 +89,9 @@
                             @foreach($order->items as $item)
                                 <span>{{ $item->quantity }}x {{ $item->product_name }}@if(!$loop->last), @endif</span>
                             @endforeach
-                            <span style="display: block; font-size: 0.8rem; color: var(--text-dim); margin-top: 0.2rem;">Fulfillment: {{ ucfirst($order->fulfillment_type) }}</span>
+                            <div style="font-size: 0.82rem; color: var(--gold-bright); margin-top: 0.4rem;">
+                                💵 Pay in person with Order ID #{{ $order->order_reference }} • {{ ucfirst($order->fulfillment_type) }}
+                            </div>
                         </div>
 
                         <!-- Action buttons -->

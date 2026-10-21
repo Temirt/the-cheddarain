@@ -99,11 +99,11 @@
 
         <div class="faq-item">
             <button type="button" class="faq-question">
-                <span>What payment methods are supported?</span>
+                <span>How do payments work? Do I need to pay online?</span>
                 <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
-                We accept Cash on Delivery, Payment at the Pickup Counter (Cash, Visa, Mastercard, Apple Pay, Google Pay), and online card payments.
+                No online payment is required! We use an in-person payment model. When you place an order on our website, you instantly receive a unique <strong>Order Reference ID</strong> (e.g. #CHED-782901). For pickup orders, simply bring this Order ID to our store counter and pay with Cash, Debit/Credit Card, or Contactless (Apple/Google Pay). For home delivery orders, show your Order ID to the courier upon arrival and pay in cash.
             </div>
         </div>
 
