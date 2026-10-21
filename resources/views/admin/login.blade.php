@@ -57,10 +57,16 @@
             </form>
 
             <!-- Pre-seeded Credentials Note -->
-            <div style="margin-top: 1.8rem; padding: 1rem; background: var(--bg-surface); border-radius: var(--radius-md); border: 1px solid var(--border-subtle); font-size: 0.8rem; color: var(--text-cream-muted);">
-                <strong style="color: var(--gold-bright); display: block; margin-bottom: 0.2rem;">Demo Staff Credentials:</strong>
-                <div>Email: <code style="color: var(--cheddar-bright);">admin@thecheddarain.com</code></div>
-                <div>Password: <code style="color: var(--cheddar-bright);">admin123</code></div>
+            <div style="margin-top: 1.8rem; padding: 1.1rem; background: var(--bg-surface); border-radius: var(--radius-md); border: 1px dashed var(--cheddar-primary); font-size: 0.85rem; color: var(--text-cream-muted);">
+                <div style="font-weight: 700; color: var(--gold-bright); margin-bottom: 0.6rem;">Demo Staff Test Accounts:</div>
+                <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                    <button type="button" onclick="fillStaff('admin@thecheddarain.com', 'admin123')" class="btn btn-secondary btn-sm" style="font-size: 0.78rem; padding: 0.35rem 0.75rem;">
+                        Auto-Fill Admin (admin123)
+                    </button>
+                    <button type="button" onclick="fillStaff('kitchen@thecheddarain.com', 'Kitchen2026!')" class="btn btn-secondary btn-sm" style="font-size: 0.78rem; padding: 0.35rem 0.75rem;">
+                        Auto-Fill Kitchen Staff
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -69,5 +75,11 @@
         </div>
     </div>
 
+<script>
+function fillStaff(email, password) {
+    document.getElementById('email').value = email;
+    document.getElementById('password').value = password;
+}
+</script>
 </body>
 </html>
