@@ -5,7 +5,9 @@
 @section('content')
 <div class="container container-narrow" style="padding-top: 4rem; padding-bottom: 6rem;">
     <div class="section-title">
-        <span class="badge badge-cheddar">Join The Cheddar Club</span>
+        <div style="margin-bottom: 0.8rem;">
+            <span class="badge badge-cheddar">Join The Cheddar Club</span>
+        </div>
         <h2>Create Your Account</h2>
         <p>Register to unlock express checkout, track orders in real time, and view order receipts.</p>
     </div>

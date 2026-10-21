@@ -29,5 +29,15 @@ class AdminUserSeeder extends Seeder
                 'password' => Hash::make('Kitchen2026!'),
             ]
         );
+
+        User::updateOrCreate(
+            ['email' => 'customer@thecheddarain.com'],
+            [
+                'name' => 'Michael Sterling',
+                'phone' => '5551234567',
+                'role' => 'customer',
+                'password' => Hash::make('customer123'),
+            ]
+        );
     }
 }

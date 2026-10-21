@@ -5,7 +5,9 @@
 @section('content')
 <div class="container container-narrow" style="padding-top: 4rem; padding-bottom: 6rem;">
     <div class="section-title">
-        <span class="badge badge-cheddar">Welcome Back</span>
+        <div style="margin-bottom: 0.8rem;">
+            <span class="badge badge-cheddar">Welcome Back</span>
+        </div>
         <h2>Customer Sign In</h2>
         <p>Sign in to your account to view your past orders and enjoy faster checkout.</p>
     </div>
@@ -18,6 +20,20 @@
     @endif
 
     <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 2.5rem; max-width: 480px; margin: 0 auto; box-shadow: var(--shadow-lg);">
+        <!-- Demo Customer Credentials Helper -->
+        <div style="background: rgba(255, 153, 0, 0.08); border: 1px dashed var(--cheddar-primary); border-radius: var(--radius-md); padding: 1.1rem; margin-bottom: 1.8rem; font-size: 0.88rem;">
+            <div style="font-weight: 700; color: var(--gold-bright); margin-bottom: 0.4rem; display: flex; align-items: center; justify-content: space-between;">
+                <span>💡 Demo Customer Account</span>
+                <button type="button" onclick="fillDemoCustomer()" class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.65rem; font-size: 0.75rem;">
+                    Auto-Fill
+                </button>
+            </div>
+            <div style="color: var(--text-cream-soft); font-size: 0.84rem; line-height: 1.5;">
+                Email: <strong style="color: var(--text-cream);">customer@thecheddarain.com</strong><br>
+                Password: <strong style="color: var(--text-cream);">customer123</strong>
+            </div>
+        </div>
+
         <form action="{{ route('login.submit') }}" method="POST">
             @csrf
 
@@ -54,4 +70,13 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+<script>
+function fillDemoCustomer() {
+    document.getElementById('email').value = 'customer@thecheddarain.com';
+    document.getElementById('password').value = 'customer123';
+}
+</script>
+@endpush
 @endsection

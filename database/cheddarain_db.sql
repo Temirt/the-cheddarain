@@ -29,12 +29,14 @@ CREATE TABLE `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Initial Administrator & Kitchen Staff Credentials:
+-- Initial Administrator, Kitchen Staff & Customer Credentials:
 -- admin@thecheddarain.com / admin123
 -- kitchen@thecheddarain.com / Kitchen2026!
+-- customer@thecheddarain.com / customer123
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `role`, `password`, `created_at`, `updated_at`) VALUES
 (1, 'The Cheddarain Manager', 'admin@thecheddarain.com', '15552433327', 'admin', '$2y$12$D24pQ8J9T.vK4B/44f5PgeC3k6O3H/e8uR8N3vH3gG.5M3E2sX1dG', NOW(), NOW()),
-(2, 'Kitchen Staff Lead', 'kitchen@thecheddarain.com', '15552433328', 'staff', '$2y$12$R5kQ8J9T.vK4B/44f5PgeC3k6O3H/e8uR8N3vH3gG.5M3E2sX1dG', NOW(), NOW());
+(2, 'Kitchen Staff Lead', 'kitchen@thecheddarain.com', '15552433328', 'staff', '$2y$12$R5kQ8J9T.vK4B/44f5PgeC3k6O3H/e8uR8N3vH3gG.5M3E2sX1dG', NOW(), NOW()),
+(3, 'Michael Sterling', 'customer@thecheddarain.com', '5551234567', 'customer', '$2y$12$e7RNoAkfT2hxFxtFf5a4.OYjGZzKtelWSpGaTIWNAeGuYi8lmj4Ju', NOW(), NOW());
 
 -- --------------------------------------------------------------------
 -- Table structure for `categories`
