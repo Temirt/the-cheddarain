@@ -48,8 +48,9 @@
                             </form>
                         </li>
                     @else
-                        <li class="mobile-only-nav"><a href="{{ route('login') }}" class="nav-link {{ request()->routeIs('login') ? 'active' : '' }}">Sign In</a></li>
+                        <li class="mobile-only-nav"><a href="{{ route('login') }}" class="nav-link {{ request()->routeIs('login') ? 'active' : '' }}">Customer Sign In</a></li>
                         <li class="mobile-only-nav"><a href="{{ route('register') }}" class="nav-link {{ request()->routeIs('register') ? 'active' : '' }}">Register</a></li>
+                        <li class="mobile-only-nav"><a href="{{ route('admin.login') }}" class="nav-link" style="color: var(--gold-bright);">🛡️ Admin & Staff Login</a></li>
                     @endauth
                 </ul>
             </nav>
@@ -67,6 +68,7 @@
                     <div class="nav-auth-desktop" style="display: flex; gap: 0.6rem; align-items: center;">
                         <a href="{{ route('login') }}" class="btn btn-secondary btn-sm" style="text-decoration: none; padding: 0.5rem 0.9rem;">Sign In</a>
                         <a href="{{ route('register') }}" class="btn btn-primary btn-sm" style="text-decoration: none; padding: 0.5rem 0.9rem;">Register</a>
+                        <a href="{{ route('admin.login') }}" class="btn btn-outline-gold btn-sm" style="text-decoration: none; padding: 0.5rem 0.85rem; font-size: 0.82rem;">🛡️ Admin</a>
                     </div>
                 @endauth
                 <a href="{{ route('cart') }}" class="cart-btn-trigger" aria-label="View Shopping Cart">

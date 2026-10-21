@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff Login — The Cheddarain</title>
+    <title>Admin & Staff Login — The Cheddarain</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,14 +14,17 @@
 </head>
 <body style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: radial-gradient(circle at 50% 30%, rgba(255, 153, 0, 0.12) 0%, #0a0b0e 70%);">
 
-    <div style="width: 100%; max-width: 440px; padding: 1.5rem;">
+    <div style="width: 100%; max-width: 460px; padding: 1.5rem;">
         <div style="text-align: center; margin-bottom: 2rem;">
-            <a href="{{ route('home') }}" class="brand-logo" style="justify-content: center; margin-bottom: 1rem;">
+            <a href="{{ route('home') }}" class="brand-logo" style="justify-content: center; margin-bottom: 1.2rem;">
                 <div class="brand-icon">🧀</div>
                 <div class="brand-text">The <span>Cheddarain</span></div>
             </a>
-            <h2 style="font-size: 1.6rem; margin-bottom: 0.4rem;">Staff & Kitchen Portal</h2>
-            <p style="font-size: 0.9rem; color: var(--text-cream-muted);">Sign in to manage live orders and store operations.</p>
+            <div style="margin-bottom: 0.6rem;">
+                <span class="badge badge-cheddar">Restaurant Management</span>
+            </div>
+            <h2 style="font-size: 1.85rem; margin-bottom: 0.5rem; color: var(--gold-bright);">Admin & Staff Login</h2>
+            <p style="font-size: 0.95rem; color: var(--text-cream-muted);">Sign in to access order management, live kitchen pipeline, and store settings.</p>
         </div>
 
         @if($errors->any())
@@ -32,6 +35,15 @@
         @endif
 
         <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 2.2rem; box-shadow: var(--shadow-lg);">
+            <!-- Portal Selector Tabs -->
+            <div style="display: flex; background: var(--bg-surface); border-radius: var(--radius-lg); padding: 0.35rem; margin-bottom: 1.8rem; border: 1px solid var(--border-subtle); gap: 0.35rem;">
+                <a href="{{ route('login') }}" class="btn btn-secondary btn-sm" style="flex: 1; text-align: center; border-radius: var(--radius-md); font-size: 0.88rem; padding: 0.6rem 0.5rem; text-decoration: none;">
+                    👤 Customer Sign In
+                </a>
+                <a href="{{ route('admin.login') }}" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; border-radius: var(--radius-md); font-size: 0.88rem; padding: 0.6rem 0.5rem; text-decoration: none;">
+                    🛡️ Admin & Staff Login
+                </a>
+            </div>
             <form action="{{ route('admin.login.submit') }}" method="POST">
                 @csrf
                 <div class="form-group">

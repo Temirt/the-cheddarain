@@ -20,6 +20,16 @@
     @endif
 
     <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 2.5rem; max-width: 480px; margin: 0 auto; box-shadow: var(--shadow-lg);">
+        <!-- Portal Selector Tabs -->
+        <div style="display: flex; background: var(--bg-surface); border-radius: var(--radius-lg); padding: 0.35rem; margin-bottom: 1.8rem; border: 1px solid var(--border-subtle); gap: 0.35rem;">
+            <a href="{{ route('login') }}" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; border-radius: var(--radius-md); font-size: 0.88rem; padding: 0.6rem 0.5rem; text-decoration: none;">
+                👤 Customer Sign In
+            </a>
+            <a href="{{ route('admin.login') }}" class="btn btn-secondary btn-sm" style="flex: 1; text-align: center; border-radius: var(--radius-md); font-size: 0.88rem; padding: 0.6rem 0.5rem; text-decoration: none;">
+                🛡️ Admin & Staff Login
+            </a>
+        </div>
+
         <!-- Demo Customer Credentials Helper -->
         <div style="background: rgba(255, 153, 0, 0.08); border: 1px dashed var(--cheddar-primary); border-radius: var(--radius-md); padding: 1.1rem; margin-bottom: 1.8rem; font-size: 0.88rem;">
             <div style="font-weight: 700; color: var(--gold-bright); margin-bottom: 0.4rem; display: flex; align-items: center; justify-content: space-between;">
