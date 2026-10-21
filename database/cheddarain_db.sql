@@ -30,7 +30,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Initial Administrator & Kitchen Staff Credentials:
--- admin@thecheddarain.com / Cheddarain2026!
+-- admin@thecheddarain.com / admin123
 -- kitchen@thecheddarain.com / Kitchen2026!
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `role`, `password`, `created_at`, `updated_at`) VALUES
 (1, 'The Cheddarain Manager', 'admin@thecheddarain.com', '15552433327', 'admin', '$2y$12$D24pQ8J9T.vK4B/44f5PgeC3k6O3H/e8uR8N3vH3gG.5M3E2sX1dG', NOW(), NOW()),

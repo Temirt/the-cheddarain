@@ -35,14 +35,30 @@
                     <li><a href="{{ route('contact') }}" class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a></li>
                     <li><a href="{{ route('faq') }}" class="nav-link {{ request()->routeIs('faq') ? 'active' : '' }}">FAQ</a></li>
                     @auth
+                        <li><a href="{{ route('account') }}" class="nav-link {{ request()->routeIs('account') ? 'active' : '' }}">My Account</a></li>
                         @if(auth()->user()->isStaff())
                             <li><a href="{{ route('admin.dashboard') }}" class="badge badge-cheddar" style="text-decoration: none;">Admin Portal</a></li>
                         @endif
+                    @else
+                        <li><a href="{{ route('login') }}" class="nav-link {{ request()->routeIs('login') ? 'active' : '' }}">Sign In</a></li>
+                        <li><a href="{{ route('register') }}" class="nav-link {{ request()->routeIs('register') ? 'active' : '' }}">Register</a></li>
                     @endauth
                 </ul>
             </nav>
 
             <div class="nav-actions">
+                @auth
+                    <a href="{{ route('account') }}" class="badge badge-gold" style="text-decoration: none; padding: 0.5rem 0.8rem; font-size: 0.85rem;">
+                        👤 {{ auth()->user()->name }}
+                    </a>
+                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                        @csrf
+                        <button type="submit" class="btn btn-secondary btn-sm" style="padding: 0.45rem 0.8rem; font-size: 0.8rem;">Sign Out</button>
+                    </form>
+                @else
+                    <a href="{{ route('login') }}" class="btn btn-secondary btn-sm" style="text-decoration: none; padding: 0.5rem 0.9rem;">Sign In</a>
+                    <a href="{{ route('register') }}" class="btn btn-primary btn-sm" style="text-decoration: none; padding: 0.5rem 0.9rem;">Register</a>
+                @endauth
                 <a href="{{ route('cart') }}" class="cart-btn-trigger" aria-label="View Shopping Cart">
                     <span>🛒</span>
                     <span style="font-size: 0.9rem;">Cart</span>

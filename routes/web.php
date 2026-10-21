@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\SettingController as AdminSettingController;
+use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
@@ -17,6 +18,14 @@ use Illuminate\Support\Facades\Route;
 | The Cheddarain Web Routes
 |--------------------------------------------------------------------------
 */
+
+// Customer Authentication & Account Portal
+Route::get('/login', [CustomerAuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [CustomerAuthController::class, 'login'])->name('login.submit');
+Route::get('/register', [CustomerAuthController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [CustomerAuthController::class, 'register'])->name('register.submit');
+Route::post('/logout', [CustomerAuthController::class, 'logout'])->name('logout');
+Route::get('/account', [CustomerAuthController::class, 'account'])->middleware('auth')->name('account');
 
 // Customer Pages
 Route::get('/', [HomeController::class, 'index'])->name('home');

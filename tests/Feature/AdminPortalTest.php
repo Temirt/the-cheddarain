@@ -19,7 +19,7 @@ class AdminPortalTest extends TestCase
     {
         $response = $this->post('/admin/login', [
             'email' => 'admin@thecheddarain.com',
-            'password' => 'Cheddarain2026!',
+            'password' => 'admin123',
         ]);
 
         $response->assertStatus(302);

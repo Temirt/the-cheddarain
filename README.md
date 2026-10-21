@@ -82,7 +82,7 @@ A complete, production-ready restaurant website for **The Cheddarain**, speciali
 
 | Role | Email | Password | Purpose |
 |---|---|---|---|
-| **Admin** | `admin@thecheddarain.com` | `Cheddarain2026!` | Full administrative access |
+| **Admin** | `admin@thecheddarain.com` | `admin123` | Full administrative access |
 | **Kitchen Staff** | `kitchen@thecheddarain.com` | `Kitchen2026!` | Order status updates & kitchen queue |
 
 ### Demo Orders for Instant Tracking Testing:

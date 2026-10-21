@@ -46,18 +46,18 @@
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;">
                         <div class="form-group" style="grid-column: 1 / -1;">
                             <label class="form-label" for="customer_name">Full Name *</label>
-                            <input type="text" name="customer_name" id="customer_name" class="form-input" required value="{{ old('customer_name') }}" placeholder="e.g. Michael Sterling">
+                            <input type="text" name="customer_name" id="customer_name" class="form-input" required value="{{ old('customer_name', auth()->user()->name ?? '') }}" placeholder="e.g. Michael Sterling">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label" for="customer_phone">Phone Number * (Used for order tracking verification)</label>
-                            <input type="tel" name="customer_phone" id="customer_phone" class="form-input" required value="{{ old('customer_phone') }}" placeholder="e.g. 555-123-4567">
+                            <input type="tel" name="customer_phone" id="customer_phone" class="form-input" required value="{{ old('customer_phone', auth()->user()->phone ?? '') }}" placeholder="e.g. 555-123-4567">
                             <span class="form-hint">You will use this number to track your order in real time.</span>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label" for="customer_email">Email Address *</label>
-                            <input type="email" name="customer_email" id="customer_email" class="form-input" required value="{{ old('customer_email') }}" placeholder="e.g. michael@example.com">
+                            <input type="email" name="customer_email" id="customer_email" class="form-input" required value="{{ old('customer_email', auth()->user()->email ?? '') }}" placeholder="e.g. michael@example.com">
                         </div>
                     </div>
                 </div>
