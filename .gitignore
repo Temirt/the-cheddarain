@@ -1,22 +1,19 @@
-/.phpunit.cache
-.phpunit.result.cache
-/node_modules
-/public/build
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
+# Local environment and secrets
 .env
-.env.backup
-.env.production
-Homestead.json
-Homestead.yaml
-auth.json
-npm-debug.log
-yarn-error.log
-/.fleet
-/.idea
-/.vscode
-database/database.sqlite
-database/database.sqlite-shm
-database/database.sqlite-wal
+.env.local
+.env.*.local
+
+# Netlify Build Artifacts
+.netlify/
+functions/node_modules/
+node_modules/
+
+# Operating System & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Archived legacy files
+_archive_cheddarain/
+*.log

@@ -1,168 +1,182 @@
-# The Cheddarain — Premium Restaurant Platform with Full Order Tracking
+# The Cheddarloin — Artisan Burger Restaurant Website
 
-> **"Dripping in Cheddar, Crafted to Perfection."**
+> **"The Art of the Burger — Burgers, elevated. Made your way and prepared for delivery."**
 
-A complete, production-ready restaurant website for **The Cheddarain**, specializing in artisan smashed Angus burgers, double-fried loaded russet fries, and signature liquid gold cheddar sauces. Built with a pure Vanilla HTML5/CSS3/JavaScript frontend and a robust Laravel (PHP) backend, ready for direct deployment on cPanel or Plesk hosting with MySQL.
-
----
-
-## 🌟 Key Features
-
-### 1. McDonald's-Inspired Live Order Tracking System
-- **5-Stage Visual Progress Timeline**:
-  1. **Order Placed**: Received by kitchen dispatch.
-  2. **Order Confirmed**: Verified and accepted by staff.
-  3. **Preparing Your Food**: Patties searing and cheddar melting (with live estimated prep countdown).
-  4. **Ready for Pickup / Out for Delivery**: Dynamic status adapted to chosen fulfillment method.
-  5. **Delivered / Completed**: Final delivery hand-off.
-- **Edge States**: Clear handling for *Pending Confirmation* and *Cancelled / Rejected* tickets with staff cancellation reasons.
-- **Security Verification Step**: Requires customer's registered phone number to prevent unauthorized inspection of personal addresses.
-- **Real-Time Polling**: Automatic status refresh every 7 seconds via lightweight REST endpoint (`/api/orders/{reference}/track`) without page reloads.
-- **Staff Audit Trail Log**: Every status transition records the staff member, exact timestamp, and audit notes.
-- **Direct WhatsApp Support**: One-click enquiry button pre-filled with the unique order reference (`#CHED-XXXXXX`).
-
-### 2. In-Person Payment Workflow (Zero Gateway Dependencies)
-- **Order ID Bring-and-Pay System**: Customers do **not** enter credit cards online.
-- When an order is submitted, the system instantly generates an **Order Reference / Order ID** (e.g. `#CHED-782901`).
-- **Pickup Orders**: Customers bring their Order ID to the restaurant counter to pay with Cash, Debit/Credit Card, or Contactless (Apple/Google Pay) upon collection.
-- **Delivery Orders**: Customers show their Order ID to the delivery courier and pay in cash upon arrival.
-
-### 3. Customer Authentication & Order History
-- **Customer Sign Up & Sign In**: Dedicated `/register` and `/login` portals for customers.
-- **Customer Dashboard (`/account`)**: Real-time view of all personal past and active orders, live status pills, one-click WhatsApp dispatch chat, and instant tracking links.
-
-### 4. Luxury Fast-Casual Customer Website
-- **Aesthetic**: Deep charcoal & black backgrounds (`#0a0b0e`, `#12141a`), vibrant cheddar-orange (`#ff9900`) and golden-yellow (`#fcbf49`) accents, cream typography (`#faf6ee`).
-- **Pages**:
-  - **Home**: Hero showcase, popular meals, 3-step ordering process, verified customer reviews.
-  - **Menu**: Category tabs (Burgers, Fries, Signature Sauces, Combos and Meals), live search, dietary badges, calorie counts.
-  - **Product Details**: Ingredients, calories, preparation time, allergen warnings, dynamic customization modal.
-  - **Cart**: Real-time quantity adjustments, options breakdown, subtotal & delivery fee calculations.
-  - **Checkout**: Contact details, delivery vs pickup toggle, address validation, payment method selection, CSRF protection.
-  - **Order Confirmation**: Displays order reference, phone verification reminder, itemized receipt, direct link to live tracking.
-  - **About Us**: Culinary philosophy, 100% prime Angus standards, fresh Wisconsin cheddar melt recipe.
-  - **Contact**: Store address, operating hours, interactive contact form, WhatsApp direct line.
-  - **FAQ**: Interactive accordion covering delivery, ordering, allergens, and tracking.
-
-### 5. Protected Restaurant Staff & Admin Portal (`/admin`)
-- **Secure Authentication**: Password hashing (Bcrypt), session protection, role-based access (`admin`, `staff`).
-- **Operational Dashboard**: Today's orders, revenue, pending tickets, active kitchen pipeline with one-click status transitions.
-- **Order Management**: Filter by status and date, search by reference or customer phone, view full customer notes.
-- **Menu Management**: Full CRUD for products, prices, categories, images, and availability toggles.
-- **Store Settings**: Configure restaurant phone, WhatsApp number, physical address, delivery fees, and opening hours.
+A complete, functional restaurant ordering website for **The Cheddarloin**, crafted with pure HTML5, CSS3, and vanilla JavaScript for the frontend, prepared for direct **Netlify** deployment, featuring **Formspree** order intake and a secure **Telegram Bot** serverless notification integration.
 
 ---
 
-## 💻 Technology Stack
+## 🌟 Architectural Highlights
 
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript (ES6+) — *Strictly zero frameworks (no React, Vue, Angular, Bootstrap, or Tailwind)*.
-- **Backend**: Laravel (PHP 8.2+).
-- **Database**: MySQL 5.7+ / 8.0+ / MariaDB 10.3+ (SQLite supported out-of-the-box for local testing).
-- **Architecture**: MVC, Eloquent ORM, RESTful API, Database Transactions, Role Middleware, CSRF Protection.
-
----
-
-## 🚀 Local Development Quickstart
-
-1. **Clone or Extract**:
-   ```bash
-   cd c:\Users\Temeb\Desktop\lamri
-   ```
-
-2. **Environment Setup**:
-   ```bash
-   cp .env.example .env
-   php artisan key:generate
-   ```
-
-3. **Run Migrations & Seeders**:
-   ```bash
-   php artisan migrate:fresh --seed
-   ```
-
-4. **Launch Local Server**:
-   ```bash
-   php artisan serve
-   ```
-   Open your browser to: **`http://127.0.0.1:8000`**
+- **Currency**: Ethiopian Birr (**ETB**).
+- **No Database**: Operates without MySQL, Postgres, MongoDB, Firebase, or external databases.
+- **No Email Notifications**: Customer emails are never collected or sent. All order confirmations are conducted directly via customer telephone number.
+- **No Customer Accounts**: No registration or login required — zero friction ordering.
+- **No Live Order Tracking**: Orders are submitted and acknowledged with an instant unique reference code (`#CHD-XXXXXX`).
+- **No Online Payments**: Zero payment gateway dependencies. Customers pay upon delivery or pickup.
+- **Browser localStorage**: Used strictly for temporary client cart persistence and recent local order history on that device (not a database).
+- **Dual Service Architecture**:
+  1. **Formspree**: Processes customer order submissions without sending emails.
+  2. **Telegram Bot**: Sends structured, real-time order alerts to the restaurant owner's personal Telegram chat via a secure Netlify serverless function.
 
 ---
 
-## 🔐 Default Demo Accounts
+## 📁 Project Structure
 
-| Role | Email | Password | Purpose |
-|---|---|---|---|
-| **Customer** | `customer@thecheddarain.com` | `customer123` | Customer login (`/login`) & order portal |
-| **Admin** | `admin@thecheddarain.com` | `admin123` | Full administrative access (`/admin`) |
-| **Kitchen Staff** | `kitchen@thecheddarain.com` | `Kitchen2026!` | Order status updates & kitchen queue |
-
-### Demo Orders for Instant Tracking Testing:
-- `CHED-782901` — **Preparing** (Phone: `5551234567`)
-- `CHED-782902` — **Ready for Pickup** (Phone: `5551234567`)
-- `CHED-782904` — **Delivered** (Phone: `5551234567`)
-
----
-
-## 🌐 cPanel / Plesk Deployment Guide
-
-### Method A: Pointing Document Root to `/public` (Recommended)
-
-1. **Create MySQL Database in cPanel**:
-   - Go to **cPanel > MySQL Databases**.
-   - Create a new database: e.g. `cpaneluser_cheddarain`.
-   - Create a database user: e.g. `cpaneluser_cheddar` and set a strong password.
-   - Assign the user to the database with **ALL PRIVILEGES**.
-
-2. **Import Database Schema**:
-   - Go to **cPanel > phpMyAdmin**.
-   - Select your newly created database.
-   - Click **Import**, choose the file `database/cheddarain_db.sql`, and click **Go**.
-
-3. **Upload Files**:
-   - In cPanel File Manager, upload `the-cheddarain-restaurant.zip` to your account root (e.g. `home/cpaneluser/`).
-   - Extract the files into a private directory, e.g. `home/cpaneluser/cheddarain/`.
-
-4. **Configure Document Root**:
-   - Go to **cPanel > Domains** (or Addon Domains).
-   - Change the Document Root of your domain to:
-     `home/cpaneluser/cheddarain/public`
-
-5. **Configure `.env`**:
-   - Copy `.env.example` to `.env` inside `cheddarain/`.
-   - Update your MySQL credentials:
-     ```env
-     APP_ENV=production
-     APP_DEBUG=false
-     APP_URL=https://yourdomain.com
-
-     DB_CONNECTION=mysql
-     DB_HOST=127.0.0.1
-     DB_PORT=3306
-     DB_DATABASE=cpaneluser_cheddarain
-     DB_USERNAME=cpaneluser_cheddar
-     DB_PASSWORD=your_strong_mysql_password
-
-     WHATSAPP_NUMBER="15552433327"
-     ```
-
-6. **Set File Permissions**:
-   - Ensure the following directories are writable by the web server (chmod `775` or `755`):
-     - `storage/`
-     - `storage/logs/`
-     - `storage/framework/`
-     - `bootstrap/cache/`
-
-### Method B: Single `public_html` Shared Hosting Setup
-If your shared hosting account forces everything into `public_html`:
-- The repository already includes a root `.htaccess` file that automatically redirects requests to `public/` while securing sensitive files (`.env`, `storage/`, `database/`).
-- Simply upload the contents into `public_html/`, configure `.env`, and import `database/cheddarain_db.sql`.
-
----
-
-## 🧪 Automated Test Suite
-
-Run the complete automated test suite verifying customer auth, checkout integrity, in-person payment calculation, phone verification, and admin order transitions:
-```bash
-php artisan test
 ```
-Result: **18 tests passed, 125 assertions**.
+├── index.html                          # Luxury single-page restaurant portal & modals
+├── css/
+│   └── style.css                       # Design system (black, gold, charcoal cards)
+├── js/
+│   ├── products.js                     # Authoritative product catalog & ETB pricing
+│   ├── cart.js                         # LocalStorage shopping cart engine
+│   ├── checkout.js                     # Validation, Formspree & Telegram submission
+│   └── app.js                          # UI orchestration, menu rendering & modals
+├── netlify/
+│   └── functions/
+│       └── telegram-order.js           # Serverless Node.js function (server validation & Telegram API)
+├── netlify.toml                        # Netlify redirects, function routes, security headers
+├── .env.example                        # Guide for Telegram & Formspree environment variables
+├── .gitignore                          # Standard git ignore rules
+└── README.md                           # Documentation & setup guide
+```
+
+---
+
+## 🎨 Design & Aesthetic
+
+- **Theme**: Luxury fast-casual restaurant aesthetic.
+- **Background**: Deep ultra-black (`#0A0A0A` / `#121212`) with ambient gold highlights.
+- **Cards**: Dark charcoal (`#181818`) with gold border accents (`rgba(212, 175, 55, 0.25)`).
+- **Buttons**: Gold metallic gradients (`linear-gradient(135deg, #E5C07B, #D4AF37, #AA771C)`).
+- **Typography**: `Cinzel` serif headers paired with clean `Plus Jakarta Sans` body copy.
+- **Menu Categories**:
+  - **Burgers**: The Cheddarloin Royal, Smoked Bacon Melt, Truffle Gold Reserve, Fiery Jalapeño, Classic Artisan.
+  - **Sides**: Loaded Cheddar Bacon Fries, Rustic Golden Wedges, Molten Cheddar Bites, Truffle Herb Fries.
+  - **Drinks**: Salted Caramel Velvet Shake, Sparkling Hibiscus Lemon Cooler, Mint Lime Sparkler, Botanical Cola.
+  - **Meals & Combos**: The Royal Feast, Smokehouse Bacon Combo, Cheddar Lovers Duo for 2.
+
+---
+
+## ⚙️ Integrations & Configuration
+
+### 1. Formspree Setup (Order Intake Without Email)
+Formspree is used to record customer orders:
+1. Create a free account at [https://formspree.io](https://formspree.io).
+2. Create a new form (e.g. named `Cheddarloin Orders`).
+3. Copy your Form ID (e.g. `xovjqqwq`).
+4. **IMPORTANT — Disable Email Notifications**:
+   - In your Formspree dashboard, click on your form.
+   - Go to **Settings** &rarr; **Notifications**.
+   - **Toggle OFF "Email notifications"** so no emails are sent.
+5. In `js/checkout.js`, set your form endpoint:
+   ```javascript
+   const FORMSPREE_ORDER_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+   ```
+   *(During initial development, a placeholder `YOUR_FORM_ID` safely simulates order intake without throwing errors).*
+
+---
+
+### 2. Telegram Bot Setup (Personal Chat Alerts)
+New orders are sent to your personal Telegram account via Netlify serverless function (`netlify/functions/telegram-order.js`):
+
+#### Step A: Create your Telegram Bot
+1. Open Telegram and search for **`@BotFather`**.
+2. Send `/newbot`.
+3. Choose a name (e.g. `The Cheddarloin Orders`) and a username ending in `bot` (e.g. `cheddarloin_orders_bot`).
+4. `@BotFather` will give you a **Bot Token** (e.g. `1234567890:ABCdefGHIjklMNOpqrSTUvwxYZ`).
+
+#### Step B: Find your Personal Telegram Chat ID
+1. Search for **`@userinfobot`** or **`@raw_data_bot`** on Telegram.
+2. Press `/start`.
+3. It will reply with your numerical **Id** (e.g. `987654321`).
+4. Open a chat with your newly created bot (`@cheddarloin_orders_bot`) and click **Start** (or send `/start`) so the bot is authorized to message you.
+
+#### Step C: Configure Netlify Environment Variables
+In your Netlify dashboard:
+- Go to: **Site configuration** &rarr; **Environment variables**.
+- Add two variables:
+  - `TELEGRAM_BOT_TOKEN` = `your_bot_token_from_botfather`
+  - `TELEGRAM_CHAT_ID` = `your_personal_chat_id`
+
+> **Security Note**: The Telegram Bot Token is **never** exposed in frontend code, HTML, or public git repos. It only exists securely inside the Netlify serverless execution environment.
+
+---
+
+### 3. Telegram Message Format
+When an order is submitted, your Telegram bot delivers this exact message:
+
+```text
+THE CHEDDARLOIN — NEW ORDER
+
+Order Reference: CHD-782901
+
+Customer: Abebe Bikila
+Phone: 0911234567
+
+Order Type: Delivery
+
+Address: Bole Atlas, near Edna Mall, Bldg 4
+
+ITEMS:
+2 x The Cheddarloin Royal — ETB 1,300
+1 x Loaded Cheddar & Bacon Fries — ETB 240
+
+TOTAL: ETB 1,640 (Includes ETB 100 delivery)
+
+Instructions: Extra hot cheddar, no raw onions
+
+Please contact the customer to confirm the order.
+```
+
+---
+
+## 🔒 Server-Side Validation & Security
+
+The Netlify function (`netlify/functions/telegram-order.js`) implements strict server-side safeguards:
+- **Price Authority**: Prices and subtotals sent from the browser are **never trusted**. The server maintains its own authoritative catalog in ETB and recalculates all sums independently.
+- **Product Verification**: Every incoming product ID and quantity is validated. Unknown IDs or invalid quantities are rejected.
+- **HTML Sanitization**: Customer names, addresses, and instructions are escaped to prevent injection attacks against Telegram message parsers.
+- **Payload Size Limits**: Rejects requests larger than 50KB to protect serverless memory.
+- **Graceful Degradation**: If environment variables have not been configured yet, the function returns a clean status without crashing or blocking customer checkout.
+
+---
+
+## 🚀 Netlify Deployment Guide
+
+1. **Connect Repository to Netlify**:
+   - Push this codebase to your GitHub account.
+   - Go to [https://app.netlify.com](https://app.netlify.com) &rarr; **Add new site** &rarr; **Import an existing project**.
+   - Select your repository.
+
+2. **Build Settings**:
+   - **Publish directory**: `.` (or leave default, configured in `netlify.toml`)
+   - **Functions directory**: `netlify/functions`
+   - **Build command**: *(None required — purely static frontend + serverless functions)*
+
+3. **Set Environment Variables**:
+   - Go to **Site settings** &rarr; **Environment variables**.
+   - Add `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`.
+
+4. **Click Deploy**:
+   - Netlify will instantly provide your live URL (e.g. `https://the-cheddarloin.netlify.app`).
+
+---
+
+## 🧪 Local Preview & Testing
+
+To test the website locally:
+
+```bash
+# Using Node built-in serve or python:
+npx serve .
+# or
+python -m http.server 8000
+```
+
+Open `http://localhost:8000` or `http://localhost:3000` in your browser:
+- Test adding burgers, sides, and drinks to cart.
+- Verify quantity adjustments and subtotal calculations in ETB.
+- Test category filters and live menu search.
+- Complete checkout with Delivery (verifying address required) and Pickup.
+- View your order history under **My Orders**.
