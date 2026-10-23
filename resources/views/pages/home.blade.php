@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'The Cheddarain — Melted Cheddar Burgers, Loaded Fries & Artisanal Sauces')
+@section('title', 'The Cheddarloin — The Art of the Burger')
 
 @section('content')
     <!-- Hero Banner -->
@@ -11,9 +11,9 @@
                     <span class="badge badge-cheddar">🔥 Fresh Smashed Angus</span>
                     <span class="badge badge-gold">🧀 Double Melted Cheddar</span>
                 </div>
-                <h1>Dripping in <span class="text-cheddar">Cheddar</span>, Crafted to <span class="text-gold">Perfection</span>.</h1>
+                <h1>THE ART OF THE <span class="text-gold">BURGER</span></h1>
                 <p class="hero-subtitle">
-                    Experience the ultimate fast-casual indulgence. Crispy-edged smashed prime beef, double-drenched in our signature Wisconsin melted cheddar cascade, sandwiched in golden toasted brioche.
+                    Burgers, elevated. Made your way and prepared for delivery.
                 </p>
 
                 <div class="hero-cta-group">

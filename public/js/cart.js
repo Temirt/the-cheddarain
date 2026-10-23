@@ -1,14 +1,18 @@
 /**
- * The Cheddarain — Vanilla JavaScript Shopping Cart Engine
+ * The Cheddarloin — Vanilla JavaScript Shopping Cart Engine
  * Persistent client-side cart with option customization & price calculation
  */
 
 const Cart = {
-    storageKey: 'cheddarain_cart',
+    storageKey: 'cheddarloin_cart',
 
     getItems() {
         try {
-            const data = localStorage.getItem(this.storageKey);
+            let data = localStorage.getItem(this.storageKey);
+            if (!data) {
+                // Fallback for previous session cart
+                data = localStorage.getItem('cheddarain_cart');
+            }
             return data ? JSON.parse(data) : [];
         } catch (e) {
             console.error('Error reading cart from localStorage', e);

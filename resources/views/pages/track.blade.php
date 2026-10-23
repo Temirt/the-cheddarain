@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Track Order #' . $order->order_reference . ' — The Cheddarain')
+@section('title', 'Track Order #' . $order->order_reference . ' — The Cheddarloin')
 
 @section('content')
 <div class="container" style="padding-top: 3.5rem; padding-bottom: 5rem;">
@@ -160,7 +160,7 @@
                             @elseif($order->status === 'out_for_delivery')
                                 Our delivery driver is en route with your piping hot order!
                             @elseif($order->status === 'delivered')
-                                Delivered! We hope you loved every bite of The Cheddarain experience.
+                                Delivered! We hope you loved every bite of The Cheddarloin experience.
                             @elseif($order->status === 'cancelled')
                                 Order was cancelled. Reason: {{ $order->cancellation_reason ?? 'Restaurant closed/capacity' }}. Contact support below.
                             @endif

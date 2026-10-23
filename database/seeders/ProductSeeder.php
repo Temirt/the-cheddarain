@@ -47,7 +47,7 @@ class ProductSeeder extends Seeder
                 'category_id' => $burgersCat->id,
                 'name' => 'The Classic Double Smash',
                 'slug' => 'the-classic-double-smash',
-                'description' => 'Twin crispy-edged smashed beef patties, double American cheddar slices, butterhead lettuce, vine-ripened tomato, and our secret Cheddarain sauce.',
+                'description' => 'Twin crispy-edged smashed beef patties, double American cheddar slices, butterhead lettuce, vine-ripened tomato, and our secret Cheddarloin sauce.',
                 'price' => 12.99,
                 'image_url' => 'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=80',
                 'badge' => 'Best Seller',

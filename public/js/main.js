@@ -1,5 +1,5 @@
 /**
- * The Cheddarain — Main Vanilla JavaScript
+ * The Cheddarloin — Main Vanilla JavaScript
  * Mobile Navigation, Interactive Customization Modal, and Menu Filtering
  */
 

@@ -11,8 +11,8 @@ class RestaurantWebsiteTest extends TestCase
     {
         $response = $this->get('/');
         $response->assertStatus(200);
-        $response->assertSee('The Cheddarain');
-        $response->assertSee('Crafted to');
+        $response->assertSee('The Cheddarloin');
+        $response->assertSee('THE ART OF THE');
         $response->assertSee('Order Now');
         $response->assertSee('Track My Order');
     }

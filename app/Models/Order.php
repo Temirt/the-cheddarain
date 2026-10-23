@@ -99,7 +99,7 @@ class Order extends Model
     {
         $phone = RestaurantSetting::get('whatsapp_number', env('WHATSAPP_NUMBER', '15552433327'));
         $phone = preg_replace('/[^0-9]/', '', $phone);
-        $message = urlencode("Hello The Cheddarain, I have an enquiry regarding my Order #{$this->order_reference}.");
+        $message = urlencode("Hello The Cheddarloin, I have an enquiry regarding my Order #{$this->order_reference}.");
         return "https://wa.me/{$phone}?text={$message}";
     }
 }

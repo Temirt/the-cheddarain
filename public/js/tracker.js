@@ -1,5 +1,5 @@
 /**
- * The Cheddarain — McDonald's-Inspired Live Order Tracking Engine
+ * The Cheddarloin — McDonald's-Inspired Live Order Tracking Engine
  * Auto-polls status every 7s, animates 5-step progress, countdown timers, and audit histories
  */
 
@@ -157,7 +157,7 @@ class OrderTracker {
                     message = 'Our delivery driver is en route with your piping hot order!';
                     break;
                 case 'delivered':
-                    message = 'Delivered! We hope you loved every bite of The Cheddarain experience.';
+                    message = 'Delivered! We hope you loved every bite of The Cheddarloin experience.';
                     break;
                 case 'cancelled':
                     message = `Order was cancelled. Reason: ${data.cancellation_reason || 'Restaurant capacity / closed'}. Contact support if you need assistance.`;

@@ -1,8 +1,8 @@
-# The Cheddarain — Premium Restaurant Platform with Full Order Tracking & Admin Portal
+# The Cheddarloin — Premium Restaurant Platform with Full Order Tracking & Admin Portal
 
-> **"Dripping in Cheddar, Crafted to Perfection."**
+> **"THE ART OF THE BURGER — Burgers, elevated. Made your way and prepared for delivery."**
 
-A complete, production-ready restaurant ordering website for **The Cheddarain**, built with a pure **HTML5/CSS3/Vanilla JavaScript** frontend and a robust **Laravel 12 (PHP)** backend with **MySQL / SQLite** database persistence.
+A complete, production-ready restaurant ordering website for **The Cheddarloin**, built with a pure **HTML5/CSS3/Vanilla JavaScript** frontend and a robust **Laravel 12 (PHP)** backend with **MySQL / SQLite** database persistence.
 
 All customer orders are stored directly in the database, automatically calculated with server-side validation, and instantly displayed in the protected restaurant management admin portal (`/admin`).
 
@@ -19,43 +19,12 @@ All customer orders are stored directly in the database, automatically calculate
   - Filter by status (`pending`, `confirmed`, `preparing`, `ready_for_pickup`, `out_for_delivery`, `delivered`, `cancelled`).
   - Search by unique Order Reference (`#CHED-XXXXXX`), customer name, or telephone number.
   - Filter by order creation date.
-- **Staff Audit Trail**: Every status transition logs the staff member's name, timestamp, and audit notes.
-- **Menu Management**: Full CRUD for products, prices, categories, and availability toggles.
+- **Menu Management (Mobile & Desktop CRUD)**:
+  - Responsive card-based view on mobile smartphones and high-density data table on desktop.
+  - Create, read, update, delete, search, and category filters.
+  - Live photo preview and device camera/gallery upload support.
+  - 1-touch stock availability toggling (`In Stock` / `Out of Stock`).
 - **Store Settings**: Configure store telephone, WhatsApp contact, delivery fees, and operating hours.
-
----
-
-### 2. Customer Fast-Casual Website
-- **Pure Vanilla Architecture**: Strictly zero heavy frontend frameworks (no React, Vue, Angular, Bootstrap, or Tailwind).
-- **Luxury Fast-Casual Aesthetic**: Deep black backgrounds (`#0a0b0e`), artisan cheddar-orange and gold accents (`#ff9900`, `#fcbf49`), cream typography (`#faf6ee`).
-- **Pages**:
-  - **Home**: Hero banner, popular meals, ordering instructions, verified customer reviews.
-  - **Menu**: Category tabs (Burgers, Fries, Signature Sauces, Combos and Meals), live search, dietary badges.
-  - **Product Details**: Customization modal with buns, extra sauces, and add-ons.
-  - **Cart**: Real-time quantity adjustments, options breakdown, subtotal & delivery fee calculations.
-  - **Checkout**: Delivery vs Pickup toggle, address inputs, customer contact details, CSRF protection.
-  - **Order Confirmation**: Displays unique order reference `#CHED-XXXXXX`, receipt breakdown, and in-person payment guidance.
-  - **Track My Order**: McDonald's-style 5-stage live order progress timeline with security phone verification.
-  - **Customer Portal (`/account`)**: Customer registration (`/register`) and login (`/login`) to view past orders.
-  - **About Us & Contact**: Culinary philosophy, store hours, location, and WhatsApp enquiry button.
-
----
-
-### 3. In-Person Payment Workflow (No Payment Gateway Needed)
-- Customers do **not** enter credit cards online.
-- When an order is submitted, the system instantly generates an **Order Reference / Order ID** (e.g. `#CHED-782901`).
-- **Pickup Orders**: Customers bring their Order ID to counter #1 to pay with Cash, Card, or Contactless upon collection.
-- **Delivery Orders**: Customers show their Order ID to the delivery courier and pay upon arrival.
-
----
-
-## 💻 Technology Stack
-
-- **Backend**: Laravel 12 (PHP 8.2+)
-- **Database**: SQLite (out-of-the-box local testing) / MySQL 5.7+ / 8.0+ (cPanel / Plesk production)
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript (ES6+)
-- **Authentication**: Laravel Session Auth with Role-Based Access Control (`admin`, `staff`, `customer`)
-- **Testing**: Automated PHPUnit test suite (18 tests, 125 assertions)
 
 ---
 
@@ -63,9 +32,8 @@ All customer orders are stored directly in the database, automatically calculate
 
 | Role | Email | Password | Access Portal |
 |---|---|---|---|
-| **Admin** | `admin@thecheddarain.com` | `admin123` | Full administrative control (`/admin`) |
-| **Kitchen Staff** | `kitchen@thecheddarain.com` | `Kitchen2026!` | Order updates & kitchen dispatch queue (`/admin`) |
-| **Customer** | `customer@thecheddarain.com` | `customer123` | Customer login & order history (`/login`) |
+| **Admin** | `admin@thecheddarloin.com` | `admin123` | Full administrative control & menu CRUD (`/admin`) |
+| **Customer** | `customer@thecheddarloin.com` | `customer123` | Customer login & order history (`/login`) |
 
 ### Demo Orders for Live Tracking:
 - `CHED-782901` — **Preparing** (Phone: `5551234567`)
@@ -95,8 +63,8 @@ All customer orders are stored directly in the database, automatically calculate
 
 4. **Access the Admin Portal**:
    - Go to: **`http://127.0.0.1:8000/admin/login`**
-   - Click the **Auto-Fill Admin** button (or enter `admin@thecheddarain.com` / `admin123`).
-   - View all incoming orders, metrics, and manage the kitchen pipeline!
+   - Click the **Auto-Fill Admin** button (or enter `admin@thecheddarloin.com` / `admin123`).
+   - View all incoming orders, manage menu CRUD, and track sales!
 
 ---
 
@@ -108,4 +76,32 @@ Run the complete test suite verifying checkout integrity, price calculation, dat
 php artisan test
 ```
 
-Result: **18 tests passed, 125 assertions**.
+Result: **24 tests passed, 154 assertions**.
+- **Pages**:
+  - **Home**: Hero banner, popular meals, ordering instructions, verified customer reviews.
+  - **Menu**: Category tabs (Burgers, Fries, Signature Sauces, Combos and Meals), live search, dietary badges.
+  - **Product Details**: Customization modal with buns, extra sauces, and add-ons.
+  - **Cart**: Real-time quantity adjustments, options breakdown, subtotal & delivery fee calculations.
+  - **Checkout**: Delivery vs Pickup toggle, address inputs, customer contact details, CSRF protection.
+  - **Order Confirmation**: Displays unique order reference `#CHED-XXXXXX`, receipt breakdown, and in-person payment guidance.
+  - **Track My Order**: McDonald's-style 5-stage live order progress timeline with security phone verification.
+  - **Customer Portal (`/account`)**: Customer registration (`/register`) and login (`/login`) to view past orders.
+  - **About Us & Contact**: Culinary philosophy, store hours, location, and WhatsApp enquiry button.
+
+---
+
+### 3. In-Person Payment Workflow (No Payment Gateway Needed)
+- Customers do **not** enter credit cards online.
+- When an order is submitted, the system instantly generates an **Order Reference / Order ID** (e.g. `#CHED-782901`).
+- **Pickup Orders**: Customers bring their Order ID to counter #1 to pay with Cash, Card, or Contactless upon collection.
+- **Delivery Orders**: Customers show their Order ID to the delivery courier and pay upon arrival.
+
+---
+
+## 💻 Technology Stack
+
+- **Backend**: Laravel 12 (PHP 8.2+)
+- **Database**: SQLite (out-of-the-box local testing) / MySQL 5.7+ / 8.0+ (cPanel / Plesk production)
+- **Frontend**: HTML5, CSS3, Vanilla JavaScript (ES6+)
+- **Authentication**: Laravel Session Auth with Role-Based Access Control (`admin`, `customer`)
+- **Testing**: Automated PHPUnit test suite (24 tests, 154 assertions)

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'About Us — The Cheddarain')
+@section('title', 'About Us — The Cheddarloin')
 
 @section('content')
 <div class="container container-narrow" style="padding-top: 4rem; padding-bottom: 6rem;">
@@ -15,7 +15,7 @@
         <div style="padding: 2.5rem;">
             <h3 style="font-size: 1.6rem; margin-bottom: 1rem; color: var(--gold-bright);">Our Culinary Philosophy</h3>
             <p style="color: var(--text-cream-soft); font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem;">
-                At <strong>The Cheddarain</strong>, we don't believe in dry, lukewarm slices of processed cheese. Every single burger is crowned with our proprietary Wisconsin sharp cheddar melt, prepared fresh every morning with cream, roasted aromatics, and a touch of secret spice.
+                At <strong>The Cheddarloin</strong>, we don't believe in dry, lukewarm slices of processed cheese. Every single burger is crowned with our proprietary Wisconsin sharp cheddar melt, prepared fresh every morning with cream, roasted aromatics, and a touch of secret spice.
             </p>
             <p style="color: var(--text-cream-muted); font-size: 1rem; line-height: 1.7;">
                 Our beef is 100% prime Angus chuck and brisket, ground daily and never frozen. Smashed hard on our seasoned flat-tops at 450°F, we lock in rich caramelization and deep savory juices before enveloping the patty in warm brioche.

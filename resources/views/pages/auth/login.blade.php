@@ -39,7 +39,7 @@
                 </button>
             </div>
             <div style="color: var(--text-cream-soft); font-size: 0.84rem; line-height: 1.5;">
-                Email: <strong style="color: var(--text-cream);">customer@thecheddarain.com</strong><br>
+                Email: <strong style="color: var(--text-cream);">customer@thecheddarloin.com</strong><br>
                 Password: <strong style="color: var(--text-cream);">customer123</strong>
             </div>
         </div>
@@ -84,7 +84,7 @@
 @push('scripts')
 <script>
 function fillDemoCustomer() {
-    document.getElementById('email').value = 'customer@thecheddarain.com';
+    document.getElementById('email').value = 'customer@thecheddarloin.com';
     document.getElementById('password').value = 'customer123';
 }
 </script>

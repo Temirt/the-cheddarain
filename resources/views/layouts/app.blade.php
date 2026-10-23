@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'The Cheddarain — Premium Burgers, Loaded Fries & Signature Sauces')</title>
+    <title>@yield('title', 'The Cheddarloin — Premium Burgers, Loaded Fries & Signature Sauces')</title>
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +23,7 @@
         <div class="container nav-container">
             <a href="{{ route('home') }}" class="brand-logo">
                 <div class="brand-icon">🧀</div>
-                <div class="brand-text">The <span>Cheddarain</span></div>
+                <div class="brand-text">The <span>Cheddarloin</span></div>
             </a>
 
             <nav>
@@ -133,7 +133,7 @@
         $rawWa = \App\Models\RestaurantSetting::get('whatsapp_number', env('WHATSAPP_NUMBER', '15552433327'));
         $cleanWa = preg_replace('/[^0-9]/', '', $rawWa);
     @endphp
-    <a href="https://wa.me/{{ $cleanWa }}?text={{ urlencode('Hello The Cheddarain! I would like to make an enquiry.') }}"
+    <a href="https://wa.me/{{ $cleanWa }}?text={{ urlencode('Hello The Cheddarloin! I would like to make an enquiry.') }}"
        target="_blank"
        rel="noopener noreferrer"
        class="floating-whatsapp-btn"
@@ -149,7 +149,7 @@
                 <div class="footer-col">
                     <div class="brand-logo" style="margin-bottom: 1rem;">
                         <div class="brand-icon">🧀</div>
-                        <div class="brand-text">The <span>Cheddarain</span></div>
+                        <div class="brand-text">The <span>Cheddarloin</span></div>
                     </div>
                     <p style="font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.5rem; color: var(--text-cream-muted);">
                         Handcrafted smashed Angus burgers, crispy double-fried russet fries, and our world-renowned melted cheddar cascades.
@@ -194,13 +194,13 @@
                         🕒 {{ \App\Models\RestaurantSetting::get('opening_hours', 'Mon - Sun: 11:00 AM - 11:00 PM') }}
                     </p>
                     <div style="margin-top: 1rem;">
-                        <a href="{{ route('admin.login') }}" style="font-size: 0.8rem; color: var(--text-dim);">Staff Login &rarr;</a>
+                        <a href="{{ route('admin.login') }}" style="font-size: 0.8rem; color: var(--text-dim);">Admin Login &rarr;</a>
                     </div>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <div>&copy; {{ date('Y') }} The Cheddarain. All rights reserved. Crafted with melted gold.</div>
+                <div>&copy; {{ date('Y') }} The Cheddarloin. All rights reserved. Crafted with melted gold.</div>
                 <div>Strictly pure Vanilla HTML5, CSS3 & JavaScript architecture.</div>
             </div>
         </div>

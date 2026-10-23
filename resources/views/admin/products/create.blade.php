@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Add New Menu Item — The Cheddarain Admin')
+@section('title', 'Add New Menu Item — The Cheddarloin Admin')
 
 @section('admin_content')
 <div style="max-width: 860px; margin: 0 auto;">

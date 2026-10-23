@@ -11,9 +11,9 @@ class AdminUserSeeder extends Seeder
     public function run(): void
     {
         User::updateOrCreate(
-            ['email' => 'admin@thecheddarain.com'],
+            ['email' => 'admin@thecheddarloin.com'],
             [
-                'name' => 'The Cheddarain Manager',
+                'name' => 'The Cheddarloin Manager',
                 'phone' => '15552433327',
                 'role' => 'admin',
                 'password' => Hash::make('admin123'),
@@ -21,7 +21,7 @@ class AdminUserSeeder extends Seeder
         );
 
         User::updateOrCreate(
-            ['email' => 'customer@thecheddarain.com'],
+            ['email' => 'customer@thecheddarloin.com'],
             [
                 'name' => 'Michael Sterling',
                 'phone' => '5551234567',

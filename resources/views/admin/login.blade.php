@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login — The Cheddarain</title>
+    <title>Admin Login — The Cheddarloin</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
         <div style="text-align: center; margin-bottom: 2rem;">
             <a href="{{ route('home') }}" class="brand-logo" style="justify-content: center; margin-bottom: 1.2rem;">
                 <div class="brand-icon">🧀</div>
-                <div class="brand-text">The <span>Cheddarain</span></div>
+                <div class="brand-text">The <span>Cheddarloin</span></div>
             </a>
             <div style="margin-bottom: 0.6rem;">
                 <span class="badge badge-cheddar">Restaurant Management</span>
@@ -48,7 +48,7 @@
                 @csrf
                 <div class="form-group">
                     <label class="form-label" for="email">Admin Email</label>
-                    <input type="email" name="email" id="email" class="form-input" required value="{{ old('email', 'admin@thecheddarain.com') }}" placeholder="admin@thecheddarain.com">
+                    <input type="email" name="email" id="email" class="form-input" required value="{{ old('email', 'admin@thecheddarloin.com') }}" placeholder="admin@thecheddarloin.com">
                 </div>
 
                 <div class="form-group" style="margin-bottom: 1.8rem;">
@@ -72,7 +72,7 @@
             <div style="margin-top: 1.8rem; padding: 1.1rem; background: var(--bg-surface); border-radius: var(--radius-md); border: 1px dashed var(--cheddar-primary); font-size: 0.85rem; color: var(--text-cream-muted);">
                 <div style="font-weight: 700; color: var(--gold-bright); margin-bottom: 0.6rem;">Demo Administrator Account:</div>
                 <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
-                    <button type="button" onclick="fillAdmin('admin@thecheddarain.com', 'admin123')" class="btn btn-secondary btn-sm" style="font-size: 0.82rem; padding: 0.45rem 0.9rem; width: 100%; justify-content: center;">
+                    <button type="button" onclick="fillAdmin('admin@thecheddarloin.com', 'admin123')" class="btn btn-secondary btn-sm" style="font-size: 0.82rem; padding: 0.45rem 0.9rem; width: 100%; justify-content: center;">
                         🔑 Auto-Fill Admin (admin123)
                     </button>
                 </div>

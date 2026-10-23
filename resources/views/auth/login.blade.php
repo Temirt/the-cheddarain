@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login — The Cheddarain</title>
+    <title>Login — The Cheddarloin</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
         <div style="text-align: center; margin-bottom: 2rem;">
             <a href="{{ route('home') }}" class="brand-logo" style="justify-content: center; margin-bottom: 1rem;">
                 <div class="brand-icon">🧀</div>
-                <div class="brand-text">The <span>Cheddarain</span></div>
+                <div class="brand-text">The <span>Cheddarloin</span></div>
             </a>
             <h2 style="font-size: 1.6rem; margin-bottom: 0.4rem;">Welcome back</h2>
             <p style="font-size: 0.9rem; color: var(--text-cream-muted);">Sign in to your customer account.</p>

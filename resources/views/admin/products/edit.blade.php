@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Edit ' . $product->name . ' — The Cheddarain Admin')
+@section('title', 'Edit ' . $product->name . ' — The Cheddarloin Admin')
 
 @section('admin_content')
 <div style="max-width: 860px; margin: 0 auto;">

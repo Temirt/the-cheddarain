@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Contact Us & Hours — The Cheddarain')
+@section('title', 'Contact Us & Hours — The Cheddarloin')
 
 @section('content')
 <div class="container" style="padding-top: 4rem; padding-bottom: 6rem;">
@@ -42,7 +42,7 @@
                         <div>
                             <strong style="color: var(--text-cream); display: block;">Email</strong>
                             <p style="color: var(--text-cream-muted); font-size: 0.95rem;">
-                                {{ \App\Models\RestaurantSetting::get('restaurant_email', 'orders@thecheddarain.com') }}
+                                {{ \App\Models\RestaurantSetting::get('restaurant_email', 'orders@thecheddarloin.com') }}
                             </p>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                         $rawWa = \App\Models\RestaurantSetting::get('whatsapp_number', '15552433327');
                         $cleanWa = preg_replace('/[^0-9]/', '', $rawWa);
                     @endphp
-                    <a href="https://wa.me/{{ $cleanWa }}?text={{ urlencode('Hello The Cheddarain, I have a quick question!') }}" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-block">
+                    <a href="https://wa.me/{{ $cleanWa }}?text={{ urlencode('Hello The Cheddarloin, I have a quick question!') }}" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-block">
                         <span>💬 Chat on WhatsApp</span>
                     </a>
                 </div>

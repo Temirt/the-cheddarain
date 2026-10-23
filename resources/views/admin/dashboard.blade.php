@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Kitchen & Store Dashboard — The Cheddarain Admin')
+@section('title', 'Store Dashboard — The Cheddarloin Admin')
 
 @section('admin_content')
 <div>

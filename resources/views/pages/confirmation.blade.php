@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Order Confirmed #' . $order->order_reference . ' — The Cheddarain')
+@section('title', 'Order Confirmed #' . $order->order_reference . ' — The Cheddarloin')
 
 @section('content')
 <div class="container container-narrow" style="padding-top: 4rem; padding-bottom: 6rem; text-align: center;">
@@ -53,7 +53,7 @@
         <div style="font-size: 0.98rem; color: var(--text-cream-soft); line-height: 1.6; background: var(--bg-surface); padding: 1.3rem 1.6rem; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle);">
             @if($order->fulfillment_type === 'pickup')
                 <p style="margin-bottom: 0.6rem;">
-                    📍 <strong>Pickup Counter Instructions:</strong> Head to <strong>The Cheddarain</strong> pickup counter and present your Order Reference: <strong style="color: var(--cheddar-bright); font-size: 1.15rem; font-family: var(--font-heading);">#{{ $order->order_reference }}</strong>.
+                    📍 <strong>Pickup Counter Instructions:</strong> Head to <strong>The Cheddarloin</strong> pickup counter and present your Order Reference: <strong style="color: var(--cheddar-bright); font-size: 1.15rem; font-family: var(--font-heading);">#{{ $order->order_reference }}</strong>.
                 </p>
                 <p style="margin: 0;">
                     💳 You will pay your total of <strong style="color: var(--gold-bright); font-size: 1.05rem;">${{ number_format($order->total, 2) }}</strong> at the counter using <strong>Cash, Card, or Contactless (Apple/Google Pay)</strong>.

@@ -20,7 +20,7 @@ class AdminPortalTest extends TestCase
     public function test_admin_can_login_with_valid_credentials(): void
     {
         $response = $this->post('/admin/login', [
-            'email' => 'admin@thecheddarain.com',
+            'email' => 'admin@thecheddarloin.com',
             'password' => 'admin123',
         ]);
 

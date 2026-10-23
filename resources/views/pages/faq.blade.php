@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Frequently Asked Questions — The Cheddarain')
+@section('title', 'Frequently Asked Questions — The Cheddarloin')
 
 @push('styles')
 <style>
@@ -79,7 +79,7 @@
 
         <div class="faq-item">
             <button type="button" class="faq-question">
-                <span>What kind of beef is used in The Cheddarain burgers?</span>
+                <span>What kind of beef is used in The Cheddarloin burgers?</span>
                 <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">

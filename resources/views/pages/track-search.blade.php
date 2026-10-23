@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Track My Order — The Cheddarain')
+@section('title', 'Track My Order — The Cheddarloin')
 
 @section('content')
 <div class="container container-narrow" style="padding-top: 4rem; padding-bottom: 6rem;">
