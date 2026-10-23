@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin & Staff Login — The Cheddarain</title>
+    <title>Admin Login — The Cheddarain</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,8 +23,8 @@
             <div style="margin-bottom: 0.6rem;">
                 <span class="badge badge-cheddar">Restaurant Management</span>
             </div>
-            <h2 style="font-size: 1.85rem; margin-bottom: 0.5rem; color: var(--gold-bright);">Admin & Staff Login</h2>
-            <p style="font-size: 0.95rem; color: var(--text-cream-muted);">Sign in to access order management, live kitchen pipeline, and store settings.</p>
+            <h2 style="font-size: 1.85rem; margin-bottom: 0.5rem; color: var(--gold-bright);">Admin Login</h2>
+            <p style="font-size: 0.95rem; color: var(--text-cream-muted);">Sign in to manage menu items, customer orders, and store settings.</p>
         </div>
 
         @if($errors->any())
@@ -41,13 +41,13 @@
                     👤 Customer Sign In
                 </a>
                 <a href="{{ route('admin.login') }}" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; border-radius: var(--radius-md); font-size: 0.88rem; padding: 0.6rem 0.5rem; text-decoration: none;">
-                    🛡️ Admin & Staff Login
+                    🛡️ Admin Login
                 </a>
             </div>
             <form action="{{ route('admin.login.submit') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label class="form-label" for="email">Staff Email</label>
+                    <label class="form-label" for="email">Admin Email</label>
                     <input type="email" name="email" id="email" class="form-input" required value="{{ old('email', 'admin@thecheddarain.com') }}" placeholder="admin@thecheddarain.com">
                 </div>
 
@@ -70,13 +70,10 @@
 
             <!-- Pre-seeded Credentials Note -->
             <div style="margin-top: 1.8rem; padding: 1.1rem; background: var(--bg-surface); border-radius: var(--radius-md); border: 1px dashed var(--cheddar-primary); font-size: 0.85rem; color: var(--text-cream-muted);">
-                <div style="font-weight: 700; color: var(--gold-bright); margin-bottom: 0.6rem;">Demo Staff Test Accounts:</div>
+                <div style="font-weight: 700; color: var(--gold-bright); margin-bottom: 0.6rem;">Demo Administrator Account:</div>
                 <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
-                    <button type="button" onclick="fillStaff('admin@thecheddarain.com', 'admin123')" class="btn btn-secondary btn-sm" style="font-size: 0.78rem; padding: 0.35rem 0.75rem;">
-                        Auto-Fill Admin (admin123)
-                    </button>
-                    <button type="button" onclick="fillStaff('kitchen@thecheddarain.com', 'Kitchen2026!')" class="btn btn-secondary btn-sm" style="font-size: 0.78rem; padding: 0.35rem 0.75rem;">
-                        Auto-Fill Kitchen Staff
+                    <button type="button" onclick="fillAdmin('admin@thecheddarain.com', 'admin123')" class="btn btn-secondary btn-sm" style="font-size: 0.82rem; padding: 0.45rem 0.9rem; width: 100%; justify-content: center;">
+                        🔑 Auto-Fill Admin (admin123)
                     </button>
                 </div>
             </div>
@@ -88,7 +85,7 @@
     </div>
 
 <script>
-function fillStaff(email, password) {
+function fillAdmin(email, password) {
     document.getElementById('email').value = email;
     document.getElementById('password').value = password;
 }

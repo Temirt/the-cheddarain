@@ -18,16 +18,38 @@
 </head>
 <body style="background: var(--bg-base);">
 
+    <!-- Mobile Admin Top Bar (Visible on mobile/tablet) -->
+    <header class="admin-mobile-header">
+        <a href="{{ route('admin.dashboard') }}" class="brand-logo" style="gap: 0.5rem;">
+            <div class="brand-icon" style="width: 32px; height: 32px; font-size: 1rem;">🧀</div>
+            <div class="brand-text" style="font-size: 1.1rem;">Cheddar<span>Admin</span></div>
+        </a>
+        <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <a href="{{ route('home') }}" target="_blank" class="btn btn-secondary btn-sm" title="View Storefront" style="padding: 0.4rem 0.6rem; font-size: 0.8rem;">
+                🌐 Store
+            </a>
+            <button type="button" class="admin-menu-toggle" id="adminMenuToggle" aria-label="Toggle admin navigation">
+                <span>☰</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Backdrop -->
+    <div class="admin-sidebar-backdrop" id="adminSidebarBackdrop"></div>
+
     <div class="admin-shell">
         <!-- Sidebar Navigation -->
-        <aside class="admin-sidebar">
-            <a href="{{ route('admin.dashboard') }}" class="brand-logo" style="margin-bottom: 2rem;">
-                <div class="brand-icon">🧀</div>
-                <div class="brand-text">Cheddar<span>Admin</span></div>
-            </a>
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem;">
+                <a href="{{ route('admin.dashboard') }}" class="brand-logo">
+                    <div class="brand-icon">🧀</div>
+                    <div class="brand-text">Cheddar<span>Admin</span></div>
+                </a>
+                <button type="button" class="admin-sidebar-close" id="adminSidebarClose" aria-label="Close menu">&times;</button>
+            </div>
 
             <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 0.6rem;">
-                Management Portal
+                Store Management
             </div>
 
             <ul class="admin-sidebar-nav">
@@ -59,7 +81,7 @@
                     </a>
                 </li>
 
-                <li class="admin-nav-item" style="margin-top: 2rem; border-top: 1px solid var(--border-subtle); padding-top: 1.5rem;">
+                <li class="admin-nav-item" style="margin-top: 1.5rem; border-top: 1px solid var(--border-subtle); padding-top: 1.2rem;">
                     <a href="{{ route('home') }}" target="_blank">
                         <span>🌐</span>
                         <span>View Customer Site &rarr;</span>
@@ -67,12 +89,12 @@
                 </li>
             </ul>
 
-            <!-- Staff User Badge & Logout -->
+            <!-- Administrator Profile & Logout -->
             <div style="padding-top: 1.5rem; border-top: 1px solid var(--border-subtle); margin-top: auto;">
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
                     <div>
-                        <div style="font-weight: 700; color: var(--text-cream); font-size: 0.9rem;">{{ auth()->user()->name ?? 'Staff User' }}</div>
-                        <div style="font-size: 0.75rem; color: var(--cheddar-bright); text-transform: uppercase;">{{ auth()->user()->role ?? 'Admin' }}</div>
+                        <div style="font-weight: 700; color: var(--text-cream); font-size: 0.9rem;">{{ auth()->user()->name ?? 'Administrator' }}</div>
+                        <div style="font-size: 0.75rem; color: var(--cheddar-bright); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;">Administrator</div>
                     </div>
                 </div>
 
@@ -105,6 +127,29 @@
         </main>
     </div>
 
+    <!-- Mobile Drawer JS -->
+    <script>
+        const menuToggle = document.getElementById('adminMenuToggle');
+        const sidebarClose = document.getElementById('adminSidebarClose');
+        const sidebar = document.getElementById('adminSidebar');
+        const backdrop = document.getElementById('adminSidebarBackdrop');
+
+        function openSidebar() {
+            if (sidebar) sidebar.classList.add('open');
+            if (backdrop) backdrop.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            if (sidebar) sidebar.classList.remove('open');
+            if (backdrop) backdrop.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        if (menuToggle) menuToggle.addEventListener('click', openSidebar);
+        if (sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
+        if (backdrop) backdrop.addEventListener('click', closeSidebar);
+    </script>
     @stack('scripts')
 </body>
 </html>

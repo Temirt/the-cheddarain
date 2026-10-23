@@ -18,9 +18,9 @@ class AdminMiddleware
             return redirect()->route('admin.login')->with('error', 'Please log in to access the restaurant management portal.');
         }
 
-        if (!Auth::user()->isStaff()) {
+        if (!Auth::user()->isAdmin()) {
             Auth::logout();
-            return redirect()->route('admin.login')->with('error', 'Unauthorized access.');
+            return redirect()->route('admin.login')->with('error', 'Unauthorized access. Administrator privileges required.');
         }
 
         return $next($request);

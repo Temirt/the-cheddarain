@@ -21,16 +21,6 @@ class AdminUserSeeder extends Seeder
         );
 
         User::updateOrCreate(
-            ['email' => 'kitchen@thecheddarain.com'],
-            [
-                'name' => 'Kitchen Staff Lead',
-                'phone' => '15552433328',
-                'role' => 'staff',
-                'password' => Hash::make('Kitchen2026!'),
-            ]
-        );
-
-        User::updateOrCreate(
             ['email' => 'customer@thecheddarain.com'],
             [
                 'name' => 'Michael Sterling',

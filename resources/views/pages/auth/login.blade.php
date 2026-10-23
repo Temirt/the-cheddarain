@@ -26,7 +26,7 @@
                 👤 Customer Sign In
             </a>
             <a href="{{ route('admin.login') }}" class="btn btn-secondary btn-sm" style="flex: 1; text-align: center; border-radius: var(--radius-md); font-size: 0.88rem; padding: 0.6rem 0.5rem; text-decoration: none;">
-                🛡️ Admin & Staff Login
+                🛡️ Admin Login
             </a>
         </div>
 

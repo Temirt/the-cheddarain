@@ -50,7 +50,7 @@
                     @else
                         <li class="mobile-only-nav"><a href="{{ route('login') }}" class="nav-link {{ request()->routeIs('login') ? 'active' : '' }}">Customer Sign In</a></li>
                         <li class="mobile-only-nav"><a href="{{ route('register') }}" class="nav-link {{ request()->routeIs('register') ? 'active' : '' }}">Register</a></li>
-                        <li class="mobile-only-nav"><a href="{{ route('admin.login') }}" class="nav-link" style="color: var(--gold-bright);">🛡️ Admin & Staff Login</a></li>
+                        <li class="mobile-only-nav"><a href="{{ route('admin.login') }}" class="nav-link" style="color: var(--gold-bright);">🛡️ Admin Login</a></li>
                     @endauth
                 </ul>
             </nav>
