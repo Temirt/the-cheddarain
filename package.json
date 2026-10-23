@@ -1,19 +1,13 @@
 {
-  "name": "the-cheddarloin-restaurant",
-  "version": "1.0.0",
-  "description": "The Cheddarloin — Luxury Fast-Casual Restaurant Ordering Platform with Formspree and Telegram Bot Integration",
-  "main": "index.html",
-  "scripts": {
-    "start": "npx serve ."
-  },
-  "keywords": [
-    "restaurant",
-    "burger",
-    "cheddarloin",
-    "formspree",
-    "telegram",
-    "netlify"
-  ],
-  "author": "The Cheddarloin",
-  "license": "MIT"
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "axios": "^1.7.4",
+        "laravel-vite-plugin": "^1.2.0",
+        "vite": "^6.0.11"
+    }
 }

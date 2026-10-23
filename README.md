@@ -1,179 +1,111 @@
-# The Cheddarloin — Artisan Burger Restaurant Website
+# The Cheddarain — Premium Restaurant Platform with Full Order Tracking & Admin Portal
 
-> **"The Art of the Burger — Burgers, elevated. Made your way and prepared for delivery."**
+> **"Dripping in Cheddar, Crafted to Perfection."**
 
-A complete, functional restaurant ordering website for **The Cheddarloin**, crafted with pure HTML5, CSS3, and vanilla JavaScript for the frontend, prepared for direct **Netlify** deployment, featuring **Formspree** order intake and a secure **Telegram Bot** serverless notification integration.
+A complete, production-ready restaurant ordering website for **The Cheddarain**, built with a pure **HTML5/CSS3/Vanilla JavaScript** frontend and a robust **Laravel 12 (PHP)** backend with **MySQL / SQLite** database persistence.
 
----
-
-## 🌟 Architectural Highlights
-
-- **Currency**: Ethiopian Birr (**ETB**).
-- **No Database**: Operates without MySQL, Postgres, MongoDB, Firebase, or external databases.
-- **No Email Notifications**: Customer emails are never collected or sent. All order confirmations are conducted directly via customer telephone number.
-- **No Customer Accounts**: No registration or login required — zero friction ordering.
-- **No Live Order Tracking**: Orders are submitted and acknowledged with an instant unique reference code (`#CHD-XXXXXX`).
-- **No Online Payments**: Zero payment gateway dependencies. Customers pay upon delivery or pickup.
-- **Browser localStorage**: Used strictly for temporary client cart persistence and recent local order history on that device (not a database).
-- **Dual Service Architecture**:
-  1. **Formspree**: Processes customer order submissions without sending emails.
-  2. **Telegram Bot**: Sends structured, real-time order alerts to the restaurant owner's personal Telegram chat via a secure Netlify serverless function.
+All customer orders are stored directly in the database, automatically calculated with server-side validation, and instantly displayed in the protected restaurant management admin portal (`/admin`).
 
 ---
 
-## 📁 Project Structure
+## 🌟 Key Features
 
-```
-├── index.html                          # Luxury single-page restaurant portal & modals
-├── css/
-│   └── style.css                       # Design system (black, gold, charcoal cards)
-├── js/
-│   ├── products.js                     # Authoritative product catalog & ETB pricing
-│   ├── cart.js                         # LocalStorage shopping cart engine
-│   ├── checkout.js                     # Validation, Formspree & Telegram submission
-│   └── app.js                          # UI orchestration, menu rendering & modals
-├── netlify/
-│   └── functions/
-│       └── telegram-order.js           # Serverless Node.js function (server validation & Telegram API)
-├── netlify.toml                        # Netlify redirects, function routes, security headers
-├── .env.example                        # Guide for Telegram & Formspree environment variables
-├── .gitignore                          # Standard git ignore rules
-└── README.md                           # Documentation & setup guide
-```
+### 1. Database-Driven Order Management & Admin Portal (`/admin`)
+- **Direct Database Persistence**: Orders are saved using database transactions across `orders`, `order_items`, and `order_status_histories`.
+- **Protected Operational Dashboard**:
+  - Daily order counters, sales summaries, and pending ticket alerts.
+  - Real-time kitchen queue with one-click status transitions.
+- **Admin Orders Manager (`/admin/orders`)**:
+  - Filter by status (`pending`, `confirmed`, `preparing`, `ready_for_pickup`, `out_for_delivery`, `delivered`, `cancelled`).
+  - Search by unique Order Reference (`#CHED-XXXXXX`), customer name, or telephone number.
+  - Filter by order creation date.
+- **Staff Audit Trail**: Every status transition logs the staff member's name, timestamp, and audit notes.
+- **Menu Management**: Full CRUD for products, prices, categories, and availability toggles.
+- **Store Settings**: Configure store telephone, WhatsApp contact, delivery fees, and operating hours.
 
 ---
 
-## 🎨 Design & Aesthetic
-
-- **Theme**: Luxury fast-casual restaurant aesthetic.
-- **Background**: Deep ultra-black (`#0A0A0A` / `#121212`) with ambient gold highlights.
-- **Cards**: Dark charcoal (`#181818`) with gold border accents (`rgba(212, 175, 55, 0.25)`).
-- **Buttons**: Gold metallic gradients (`linear-gradient(135deg, #E5C07B, #D4AF37, #AA771C)`).
-- **Typography**: `Cinzel` serif headers paired with clean `Plus Jakarta Sans` body copy.
-- **Menu Categories**:
-  - **Burgers**: The Cheddarloin Royal, Smoked Bacon Melt, Truffle Gold Reserve, Fiery Jalapeño, Classic Artisan.
-  - **Sides**: Loaded Cheddar Bacon Fries, Rustic Golden Wedges, Molten Cheddar Bites, Truffle Herb Fries.
-  - **Drinks**: Salted Caramel Velvet Shake, Sparkling Hibiscus Lemon Cooler, Mint Lime Sparkler, Botanical Cola.
-  - **Meals & Combos**: The Royal Feast, Smokehouse Bacon Combo, Cheddar Lovers Duo for 2.
+### 2. Customer Fast-Casual Website
+- **Pure Vanilla Architecture**: Strictly zero heavy frontend frameworks (no React, Vue, Angular, Bootstrap, or Tailwind).
+- **Luxury Fast-Casual Aesthetic**: Deep black backgrounds (`#0a0b0e`), artisan cheddar-orange and gold accents (`#ff9900`, `#fcbf49`), cream typography (`#faf6ee`).
+- **Pages**:
+  - **Home**: Hero banner, popular meals, ordering instructions, verified customer reviews.
+  - **Menu**: Category tabs (Burgers, Fries, Signature Sauces, Combos and Meals), live search, dietary badges.
+  - **Product Details**: Customization modal with buns, extra sauces, and add-ons.
+  - **Cart**: Real-time quantity adjustments, options breakdown, subtotal & delivery fee calculations.
+  - **Checkout**: Delivery vs Pickup toggle, address inputs, customer contact details, CSRF protection.
+  - **Order Confirmation**: Displays unique order reference `#CHED-XXXXXX`, receipt breakdown, and in-person payment guidance.
+  - **Track My Order**: McDonald's-style 5-stage live order progress timeline with security phone verification.
+  - **Customer Portal (`/account`)**: Customer registration (`/register`) and login (`/login`) to view past orders.
+  - **About Us & Contact**: Culinary philosophy, store hours, location, and WhatsApp enquiry button.
 
 ---
 
-## ⚙️ Integrations & Configuration
+### 3. In-Person Payment Workflow (No Payment Gateway Needed)
+- Customers do **not** enter credit cards online.
+- When an order is submitted, the system instantly generates an **Order Reference / Order ID** (e.g. `#CHED-782901`).
+- **Pickup Orders**: Customers bring their Order ID to counter #1 to pay with Cash, Card, or Contactless upon collection.
+- **Delivery Orders**: Customers show their Order ID to the delivery courier and pay upon arrival.
 
-### 1. Formspree Setup (Order Intake Without Email)
-Formspree is used to record customer orders:
-1. Your Formspree form is configured: `https://formspree.io/f/xkjjwddv`.
-2. **IMPORTANT — Disable Email Notifications in Formspree**:
-   - In your Formspree dashboard, open your form `xkjjwddv`.
-   - Go to **Settings** &rarr; **Notifications**.
-   - **Toggle OFF "Email notifications"** so customer orders are only dispatched to Telegram.
-3. In `js/checkout.js`, the form endpoint is connected:
-   ```javascript
-   const FORMSPREE_ORDER_ENDPOINT = "https://formspree.io/f/xkjjwddv";
+---
+
+## 💻 Technology Stack
+
+- **Backend**: Laravel 12 (PHP 8.2+)
+- **Database**: SQLite (out-of-the-box local testing) / MySQL 5.7+ / 8.0+ (cPanel / Plesk production)
+- **Frontend**: HTML5, CSS3, Vanilla JavaScript (ES6+)
+- **Authentication**: Laravel Session Auth with Role-Based Access Control (`admin`, `staff`, `customer`)
+- **Testing**: Automated PHPUnit test suite (18 tests, 125 assertions)
+
+---
+
+## 🔐 Default Demo Accounts
+
+| Role | Email | Password | Access Portal |
+|---|---|---|---|
+| **Admin** | `admin@thecheddarain.com` | `admin123` | Full administrative control (`/admin`) |
+| **Kitchen Staff** | `kitchen@thecheddarain.com` | `Kitchen2026!` | Order updates & kitchen dispatch queue (`/admin`) |
+| **Customer** | `customer@thecheddarain.com` | `customer123` | Customer login & order history (`/login`) |
+
+### Demo Orders for Live Tracking:
+- `CHED-782901` — **Preparing** (Phone: `5551234567`)
+- `CHED-782902` — **Ready for Pickup** (Phone: `5551234567`)
+- `CHED-782904` — **Delivered** (Phone: `5551234567`)
+
+---
+
+## 🚀 Quickstart & Local Testing
+
+1. **Environment Configuration**:
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
    ```
 
----
+2. **Run Migrations & Seeders**:
+   ```bash
+   php artisan migrate --seed
+   ```
 
-### 2. Telegram Bot Setup (Personal Chat Alerts)
-New orders are sent to your personal Telegram account via Netlify serverless function (`netlify/functions/telegram-order.js`):
+3. **Start Development Server**:
+   ```bash
+   php artisan serve --host=127.0.0.1 --port=8000
+   ```
+   Open your browser to: **`http://127.0.0.1:8000`**
 
-#### Step A: Create your Telegram Bot
-1. Open Telegram and search for **`@BotFather`**.
-2. Send `/newbot`.
-3. Choose a name (e.g. `The Cheddarloin Orders`) and a username ending in `bot` (e.g. `cheddarloin_orders_bot`).
-4. `@BotFather` will give you a **Bot Token** (e.g. `1234567890:ABCdefGHIjklMNOpqrSTUvwxYZ`).
-
-#### Step B: Find your Personal Telegram Chat ID
-1. Search for **`@userinfobot`** or **`@raw_data_bot`** on Telegram.
-2. Press `/start`.
-3. It will reply with your numerical **Id** (e.g. `987654321`).
-4. Open a chat with your newly created bot (`@cheddarloin_orders_bot`) and click **Start** (or send `/start`) so the bot is authorized to message you.
-
-#### Step C: Configure Netlify Environment Variables
-In your Netlify dashboard:
-- Go to: **Site configuration** &rarr; **Environment variables**.
-- Add two variables:
-  - `TELEGRAM_BOT_TOKEN` = `your_bot_token_from_botfather`
-  - `TELEGRAM_CHAT_ID` = `your_personal_chat_id`
-
-> **Security Note**: The Telegram Bot Token is **never** exposed in frontend code, HTML, or public git repos. It only exists securely inside the Netlify serverless execution environment.
+4. **Access the Admin Portal**:
+   - Go to: **`http://127.0.0.1:8000/admin/login`**
+   - Click the **Auto-Fill Admin** button (or enter `admin@thecheddarain.com` / `admin123`).
+   - View all incoming orders, metrics, and manage the kitchen pipeline!
 
 ---
 
-### 3. Telegram Message Format
-When an order is submitted, your Telegram bot delivers this exact message:
+## 🧪 Automated Test Suite
 
-```text
-THE CHEDDARLOIN — NEW ORDER
-
-Order Reference: CHD-782901
-
-Customer: Abebe Bikila
-Phone: 0911234567
-
-Order Type: Delivery
-
-Address: Bole Atlas, near Edna Mall, Bldg 4
-
-ITEMS:
-2 x The Cheddarloin Royal — ETB 1,300
-1 x Loaded Cheddar & Bacon Fries — ETB 240
-
-TOTAL: ETB 1,640 (Includes ETB 100 delivery)
-
-Instructions: Extra hot cheddar, no raw onions
-
-Please contact the customer to confirm the order.
-```
-
----
-
-## 🔒 Server-Side Validation & Security
-
-The Netlify function (`netlify/functions/telegram-order.js`) implements strict server-side safeguards:
-- **Price Authority**: Prices and subtotals sent from the browser are **never trusted**. The server maintains its own authoritative catalog in ETB and recalculates all sums independently.
-- **Product Verification**: Every incoming product ID and quantity is validated. Unknown IDs or invalid quantities are rejected.
-- **HTML Sanitization**: Customer names, addresses, and instructions are escaped to prevent injection attacks against Telegram message parsers.
-- **Payload Size Limits**: Rejects requests larger than 50KB to protect serverless memory.
-- **Graceful Degradation**: If environment variables have not been configured yet, the function returns a clean status without crashing or blocking customer checkout.
-
----
-
-## 🚀 Netlify Deployment Guide
-
-1. **Connect Repository to Netlify**:
-   - Push this codebase to your GitHub account.
-   - Go to [https://app.netlify.com](https://app.netlify.com) &rarr; **Add new site** &rarr; **Import an existing project**.
-   - Select your repository.
-
-2. **Build Settings**:
-   - **Publish directory**: `.` (or leave default, configured in `netlify.toml`)
-   - **Functions directory**: `netlify/functions`
-   - **Build command**: *(None required — purely static frontend + serverless functions)*
-
-3. **Set Environment Variables**:
-   - Go to **Site settings** &rarr; **Environment variables**.
-   - Add `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`.
-
-4. **Click Deploy**:
-   - Netlify will instantly provide your live URL (e.g. `https://the-cheddarloin.netlify.app`).
-
----
-
-## 🧪 Local Preview & Testing
-
-To test the website locally:
+Run the complete test suite verifying checkout integrity, price calculation, database persistence, phone verification, and admin order transitions:
 
 ```bash
-# Using Node built-in serve or python:
-npx serve .
-# or
-python -m http.server 8000
+php artisan test
 ```
 
-Open `http://localhost:8000` or `http://localhost:3000` in your browser:
-- Test adding burgers, sides, and drinks to cart.
-- Verify quantity adjustments and subtotal calculations in ETB.
-- Test category filters and live menu search.
-- Complete checkout with Delivery (verifying address required) and Pickup.
-- View your order history under **My Orders**.
+Result: **18 tests passed, 125 assertions**.

@@ -1,19 +1,19 @@
-# Local environment and secrets
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
 .env
-.env.local
-.env.*.local
-
-# Netlify Build Artifacts
-.netlify/
-functions/node_modules/
-node_modules/
-
-# Operating System & IDE
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
-
-# Archived legacy files
-_archive_cheddarain/
+.env.backup
+.env.production
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+auth.json
+npm-debug.log
+yarn-error.log
+/.fleet
+/.idea
+/.vscode
 *.log
