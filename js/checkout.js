@@ -3,9 +3,8 @@
  * Integrates Formspree for order intake and Netlify Function for Telegram dispatch.
  */
 
-// Configurable Formspree Endpoint placeholder
-// Replace YOUR_FORM_ID with your Formspree form ID (e.g. https://formspree.io/f/xovjqqwq)
-const FORMSPREE_ORDER_ENDPOINT = window.FORMSPREE_ENDPOINT || "https://formspree.io/f/YOUR_FORM_ID";
+// Formspree Order Intake Endpoint
+const FORMSPREE_ORDER_ENDPOINT = window.FORMSPREE_ENDPOINT || "https://formspree.io/f/xkjjwddv";
 
 // Local storage key for customer's local order history (Temporary browser view, NOT a database)
 const ORDER_HISTORY_KEY = "cheddarloin_recent_orders";

@@ -62,18 +62,15 @@ A complete, functional restaurant ordering website for **The Cheddarloin**, craf
 
 ### 1. Formspree Setup (Order Intake Without Email)
 Formspree is used to record customer orders:
-1. Create a free account at [https://formspree.io](https://formspree.io).
-2. Create a new form (e.g. named `Cheddarloin Orders`).
-3. Copy your Form ID (e.g. `xovjqqwq`).
-4. **IMPORTANT — Disable Email Notifications**:
-   - In your Formspree dashboard, click on your form.
+1. Your Formspree form is configured: `https://formspree.io/f/xkjjwddv`.
+2. **IMPORTANT — Disable Email Notifications in Formspree**:
+   - In your Formspree dashboard, open your form `xkjjwddv`.
    - Go to **Settings** &rarr; **Notifications**.
-   - **Toggle OFF "Email notifications"** so no emails are sent.
-5. In `js/checkout.js`, set your form endpoint:
+   - **Toggle OFF "Email notifications"** so customer orders are only dispatched to Telegram.
+3. In `js/checkout.js`, the form endpoint is connected:
    ```javascript
-   const FORMSPREE_ORDER_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+   const FORMSPREE_ORDER_ENDPOINT = "https://formspree.io/f/xkjjwddv";
    ```
-   *(During initial development, a placeholder `YOUR_FORM_ID` safely simulates order intake without throwing errors).*
 
 ---
 
