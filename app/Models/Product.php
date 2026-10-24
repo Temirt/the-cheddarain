@@ -17,6 +17,7 @@ class Product extends Model
         'slug',
         'description',
         'price',
+        'image',
         'image_url',
         'badge',
         'calories',
@@ -34,6 +35,28 @@ class Product extends Model
         'prep_time_minutes' => 'integer',
         'sort_order' => 'integer',
     ];
+
+    public function getImageUrlAttribute(): string
+    {
+        $img = $this->attributes['image'] ?? $this->attributes['image_url'] ?? null;
+        if (!$img) {
+            return asset('assets/images/hero-burger.jpg');
+        }
+        if (str_starts_with($img, 'http://') || str_starts_with($img, 'https://')) {
+            return $img;
+        }
+        return asset($img);
+    }
+
+    public function getImageAttribute(): string
+    {
+        return $this->image_url;
+    }
+
+    public function getFormattedPriceAttribute(): string
+    {
+        return number_format($this->price, 2) . ' Birr';
+    }
 
     public function category(): BelongsTo
     {

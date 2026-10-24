@@ -3,54 +3,57 @@
 @section('title', 'The Cheddarloin — The Art of the Burger')
 
 @section('content')
-    <!-- Hero Banner -->
-    <section class="hero-section">
+    <!-- Cinematic Hero Section -->
+    <section class="hero-section" id="hero">
         <div class="container hero-grid">
             <div class="hero-content">
-                <div style="display: flex; gap: 0.8rem; margin-bottom: 1.2rem;">
-                    <span class="badge badge-cheddar">🔥 Fresh Smashed Angus</span>
-                    <span class="badge badge-gold">🧀 Double Melted Cheddar</span>
+                <div style="margin-bottom: 0.8rem;">
+                    <span style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 800; letter-spacing: 0.2em; color: var(--gold-primary); text-transform: uppercase;">
+                        THE ART OF THE BURGER
+                    </span>
                 </div>
-                <h1>THE ART OF THE <span class="text-gold">BURGER</span></h1>
-                <p class="hero-subtitle">
+                <h1 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 5.5vw, 4.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.2rem; color: var(--text-cream);">
+                    The <span style="color: var(--gold-primary);">Cheddarloin</span>
+                </h1>
+                <p class="hero-subtitle" style="font-size: 1.15rem; color: var(--text-secondary); max-width: 520px; line-height: 1.6; margin-bottom: 2rem;">
                     Burgers, elevated. Made your way and prepared for delivery.
                 </p>
 
-                <div class="hero-cta-group">
-                    <a href="{{ route('menu') }}" class="btn btn-primary btn-lg">
-                        <span>🍔</span>
-                        <span>Order Now</span>
+                <div class="hero-cta-group" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem;">
+                    <a href="#menu" class="btn btn-primary btn-lg" style="padding: 0.95rem 2rem; font-size: 1rem; border-radius: var(--radius-full);">
+                        <span>Explore the Menu</span>
+                        <span>&darr;</span>
                     </a>
-                    <a href="{{ route('order.track') }}" class="btn btn-secondary btn-lg">
-                        <span>📍</span>
-                        <span>Track My Order</span>
+                    <a href="{{ route('orders') }}" class="btn btn-secondary btn-lg" style="padding: 0.95rem 1.8rem; font-size: 1rem; border-radius: var(--radius-full);">
+                        <span>📦</span>
+                        <span>My Orders</span>
                     </a>
                 </div>
 
-                <ul class="hero-features-list">
-                    <li class="hero-feature-item">
-                        <span style="color: var(--cheddar-bright); font-size: 1.2rem;">✓</span>
-                        <span>100% Angus Beef</span>
+                <ul class="hero-features-list" style="display: flex; gap: 1.5rem; list-style: none; padding: 0; margin: 0; flex-wrap: wrap;">
+                    <li style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-cream-soft); font-size: 0.9rem;">
+                        <span style="color: var(--gold-primary); font-weight: bold;">✓</span>
+                        <span>Fresh Angus Beef</span>
                     </li>
-                    <li class="hero-feature-item">
-                        <span style="color: var(--cheddar-bright); font-size: 1.2rem;">✓</span>
-                        <span>12-15 Min Fast Prep</span>
+                    <li style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-cream-soft); font-size: 0.9rem;">
+                        <span style="color: var(--gold-primary); font-weight: bold;">✓</span>
+                        <span>Double Melted Cheddar</span>
                     </li>
-                    <li class="hero-feature-item">
-                        <span style="color: var(--cheddar-bright); font-size: 1.2rem;">✓</span>
-                        <span>Real-Time Tracking</span>
+                    <li style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-cream-soft); font-size: 0.9rem;">
+                        <span style="color: var(--gold-primary); font-weight: bold;">✓</span>
+                        <span>Direct Delivery</span>
                     </li>
                 </ul>
             </div>
 
             <div class="hero-image-wrapper">
-                <div class="hero-image-card">
-                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80" alt="The Cheddar Lava Burger" loading="eager">
-                    <div class="hero-floating-badge">
-                        <div class="floating-badge-icon">⭐</div>
-                        <div class="floating-badge-text">
-                            <strong>4.9 / 5.0 Rating</strong>
-                            <span>Loved by 12,500+ burger fanatics</span>
+                <div class="hero-image-card" style="border-radius: var(--radius-xl); overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.8); border: 1px solid var(--border-color); position: relative;">
+                    <img src="{{ asset('assets/images/hero-burger.jpg') }}" alt="The Cheddarloin Burger" loading="eager" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                    <div class="hero-floating-badge" style="position: absolute; bottom: 20px; left: 20px; right: 20px; background: rgba(17, 16, 14, 0.88); backdrop-filter: blur(12px); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.9rem 1.2rem; display: flex; align-items: center; gap: 0.9rem;">
+                        <div style="font-size: 1.6rem;">⭐</div>
+                        <div>
+                            <strong style="color: var(--gold-primary); display: block; font-size: 0.95rem;">4.9 / 5.0 Rating</strong>
+                            <span style="color: var(--text-muted); font-size: 0.8rem;">Loved by burger enthusiasts across Addis Ababa</span>
                         </div>
                     </div>
                 </div>
@@ -58,35 +61,37 @@
         </div>
     </section>
 
-    <!-- Popular Categories Strip -->
-    <section style="background: var(--bg-surface); padding: 3rem 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+    <!-- Menu Section (Crafted To Order) -->
+    <section class="section-spacing" id="menu" style="scroll-margin-top: 80px;">
         <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
-                @foreach($categories as $cat)
-                    <a href="{{ route('menu', ['category' => $cat->slug]) }}" class="category-tab-btn" style="justify-content: center; padding: 1.2rem; border-radius: var(--radius-lg); background: var(--bg-card);">
-                        <span style="font-size: 1.8rem;">{{ $cat->icon ?? '🍔' }}</span>
-                        <div style="text-align: left;">
-                            <div style="font-weight: 700; color: var(--text-cream);">{{ $cat->name }}</div>
-                            <div style="font-size: 0.78rem; color: var(--text-cream-muted);">Explore selection &rarr;</div>
-                        </div>
-                    </a>
+            <div class="section-title" style="text-align: center; margin-bottom: 2.5rem;">
+                <span style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 800; letter-spacing: 0.18em; color: var(--gold-primary); text-transform: uppercase; display: block; margin-bottom: 0.5rem;">
+                    CRAFTED TO ORDER
+                </span>
+                <h2 style="font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: var(--text-cream); margin-bottom: 0.6rem;">
+                    The Menu
+                </h2>
+                <p style="color: var(--text-secondary); font-size: 1.05rem; max-width: 580px; margin: 0 auto;">
+                    Choose a favourite. Finish it your way.
+                </p>
+            </div>
+
+            <!-- Instant Client-Side Category Filter Tabs -->
+            <div class="menu-category-tabs" style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem;">
+                <button type="button" class="category-filter-btn active" data-category="all">
+                    All Selection
+                </button>
+                @foreach($categories as $category)
+                    <button type="button" class="category-filter-btn" data-category="{{ $category->slug }}">
+                        {{ $category->icon ?? '' }} {{ $category->name }}
+                    </button>
                 @endforeach
             </div>
-        </div>
-    </section>
 
-    <!-- Featured Products Showcase -->
-    <section class="section-spacing">
-        <div class="container">
-            <div class="section-title">
-                <span class="badge badge-cheddar">Chef's Curated Selection</span>
-                <h2>Signature Burgers & Meals</h2>
-                <p>Each masterpiece is hand-smashed on our seasoned chrome griddle and drenched in warm melted gold.</p>
-            </div>
-
-            <div class="product-grid">
-                @foreach($featuredProducts as $product)
-                    <div class="product-card" data-category="{{ $product->category->slug ?? '' }}">
+            <!-- Products Grid (Mobile single-column, Desktop 3-column) -->
+            <div class="product-grid" id="product-grid">
+                @foreach($products as $product)
+                    <div class="product-card" data-category="{{ $product->category->slug ?? 'burgers' }}">
                         <div class="product-image-container">
                             <img src="{{ $product->image_url }}" alt="{{ $product->name }}" loading="lazy">
                             @if($product->badge)
@@ -107,133 +112,79 @@
                             <p class="product-desc">{{ $product->description }}</p>
 
                             <div class="product-footer">
-                                <div class="product-price">${{ number_format($product->price, 2) }}</div>
-                                <div>
+                                <div class="product-price">{{ $product->formatted_price }}</div>
+                                <div style="display: flex; gap: 0.5rem; align-items: center;">
                                     @if($product->options->count() > 0)
-                                        <button type="button" class="btn btn-primary btn-sm open-customize-btn" data-product-id="{{ $product->id }}">
-                                            <span>Customize & Add</span>
-                                        </button>
-                                    @else
-                                        <button type="button" class="btn btn-primary btn-sm quick-add-btn"
-                                                data-product-id="{{ $product->id }}"
-                                                data-product-name="{{ $product->name }}"
-                                                data-product-price="{{ $product->price }}"
-                                                data-product-image="{{ $product->image_url }}">
-                                            <span>+ Quick Add</span>
+                                        <button type="button" class="btn btn-secondary btn-sm open-customize-btn" data-product-id="{{ $product->id }}" title="Customize Bun & Toppings">
+                                            <span>Customize</span>
                                         </button>
                                     @endif
+                                    <button type="button" class="btn-add"
+                                            data-product-id="{{ $product->id }}"
+                                            data-product-name="{{ $product->name }}"
+                                            data-product-price="{{ $product->price }}"
+                                            data-product-image="{{ $product->image_url }}"
+                                            aria-label="Add {{ $product->name }} to cart">
+                                        <span>Add +</span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
-
-            <div style="text-align: center; margin-top: 3.5rem;">
-                <a href="{{ route('menu') }}" class="btn btn-secondary btn-lg">
-                    <span>View Full Artisan Menu ({{ $stats['total_burgers'] }} items)</span>
-                    <span>&rarr;</span>
-                </a>
-            </div>
         </div>
     </section>
 
-    <!-- How Ordering Works (3-Step Fast Flow) -->
-    <section class="section-spacing" style="background: var(--bg-surface); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+    <!-- How Ordering Works (3-Step Luxury Flow) -->
+    <section class="section-spacing" style="background: var(--bg-surface); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
         <div class="container">
-            <div class="section-title">
-                <span class="badge badge-gold">Lightning Quick</span>
-                <h2>How It Works</h2>
-                <p>From your screen to piping hot melted cheddar in minutes.</p>
+            <div class="section-title" style="text-align: center; margin-bottom: 3rem;">
+                <span style="font-size: 0.82rem; font-weight: 800; letter-spacing: 0.15em; color: var(--gold-primary); text-transform: uppercase; display: block; margin-bottom: 0.5rem;">
+                    EFFORTLESS ORDERING
+                </span>
+                <h2 style="font-family: var(--font-heading); font-size: 2.2rem; color: var(--text-cream); margin-bottom: 0.6rem;">
+                    How It Works
+                </h2>
+                <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto;">
+                    From chrome griddle to your doorstep in minutes.
+                </p>
             </div>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem;">
-                <div style="background: var(--bg-card); padding: 2.2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); text-align: center;">
-                    <div style="width: 60px; height: 60px; background: rgba(255, 153, 0, 0.15); color: var(--cheddar-bright); font-size: 1.8rem; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.4rem auto; font-weight: 800;">1</div>
-                    <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem;">Pick Your Feast</h3>
-                    <p style="font-size: 0.92rem; color: var(--text-cream-muted);">Select your favorite smash burger, customize bun style, add cheese upgrades, and pair with loaded sides.</p>
+                <div style="background: var(--bg-card); padding: 2.2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-color); text-align: center;">
+                    <div style="width: 54px; height: 54px; background: rgba(243, 198, 109, 0.15); color: var(--gold-primary); font-size: 1.6rem; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.4rem auto; font-weight: 800; border: 1px solid var(--gold-border);">1</div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem; color: var(--text-cream);">Select Your Feast</h3>
+                    <p style="font-size: 0.92rem; color: var(--text-secondary);">Browse our Angus patties, loaded cheddar sides, and iced beverages. Hit "Add +" to build your tray.</p>
                 </div>
 
-                <div style="background: var(--bg-card); padding: 2.2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); text-align: center;">
-                    <div style="width: 60px; height: 60px; background: rgba(252, 191, 73, 0.15); color: var(--gold-bright); font-size: 1.8rem; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.4rem auto; font-weight: 800;">2</div>
-                    <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem;">Fresh Kitchen Prep</h3>
-                    <p style="font-size: 0.92rem; color: var(--text-cream-muted);">Our grillmasters smash patties to order, toast brioche, and pour fresh hot cheddar over your creation.</p>
+                <div style="background: var(--bg-card); padding: 2.2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-color); text-align: center;">
+                    <div style="width: 54px; height: 54px; background: rgba(243, 198, 109, 0.15); color: var(--gold-primary); font-size: 1.6rem; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.4rem auto; font-weight: 800; border: 1px solid var(--gold-border);">2</div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem; color: var(--text-cream);">Swift Checkout</h3>
+                    <p style="font-size: 0.92rem; color: var(--text-secondary);">No lengthy account creation. Provide your name, phone, and delivery address. Pay in-person on arrival.</p>
                 </div>
 
-                <div style="background: var(--bg-card); padding: 2.2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); text-align: center;">
-                    <div style="width: 60px; height: 60px; background: rgba(16, 185, 129, 0.15); color: var(--success); font-size: 1.8rem; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.4rem auto; font-weight: 800;">3</div>
-                    <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem;">Track & Savor</h3>
-                    <p style="font-size: 0.92rem; color: var(--text-cream-muted);">Watch our live McDonald's-style progress timeline with auto-polling updates, then enjoy hot and fresh.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Customer Reviews -->
-    <section class="section-spacing">
-        <div class="container">
-            <div class="section-title">
-                <span class="badge badge-cheddar">Customer Reviews</span>
-                <h2>What Burger Lovers Say</h2>
-                <p>Authentic feedback from real patrons who experienced the melted gold.</p>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2rem;">
-                    <div style="color: var(--gold-bright); font-size: 1.2rem; margin-bottom: 0.8rem;">★★★★★</div>
-                    <p style="font-size: 0.98rem; font-style: italic; margin-bottom: 1.5rem; line-height: 1.6;">
-                        "The Cheddar Lava is genuinely the best burger I've had in years. The cheese is decadent, not greasy, and the smash crust on the patties is perfection."
-                    </p>
-                    <div style="display: flex; align-items: center; gap: 0.8rem;">
-                        <div style="width: 44px; height: 44px; border-radius: var(--radius-full); background: var(--bg-elevated); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--cheddar-bright);">EM</div>
-                        <div>
-                            <div style="font-weight: 700; color: var(--text-cream);">Ethan Miller</div>
-                            <div style="font-size: 0.8rem; color: var(--text-dim);">Verified Customer • Order #CHED-8491</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2rem;">
-                    <div style="color: var(--gold-bright); font-size: 1.2rem; margin-bottom: 0.8rem;">★★★★★</div>
-                    <p style="font-size: 0.98rem; font-style: italic; margin-bottom: 1.5rem; line-height: 1.6;">
-                        "The live order tracker feels just like the McDonald's app but better! Watching the timeline change from kitchen prep to out for delivery made waiting fun."
-                    </p>
-                    <div style="display: flex; align-items: center; gap: 0.8rem;">
-                        <div style="width: 44px; height: 44px; border-radius: var(--radius-full); background: var(--bg-elevated); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--gold-bright);">SL</div>
-                        <div>
-                            <div style="font-weight: 700; color: var(--text-cream);">Sophia Laurent</div>
-                            <div style="font-size: 0.8rem; color: var(--text-dim);">Verified Customer • Order #CHED-6204</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2rem;">
-                    <div style="color: var(--gold-bright); font-size: 1.2rem; margin-bottom: 0.8rem;">★★★★★</div>
-                    <p style="font-size: 0.98rem; font-style: italic; margin-bottom: 1.5rem; line-height: 1.6;">
-                        "Loaded Cheddar Bacon Fries + Liquid Gold dip pot is an absolute cheat meal dream. Fast pickup at the counter and everything was piping hot."
-                    </p>
-                    <div style="display: flex; align-items: center; gap: 0.8rem;">
-                        <div style="width: 44px; height: 44px; border-radius: var(--radius-full); background: var(--bg-elevated); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--cheddar-bright);">JR</div>
-                        <div>
-                            <div style="font-weight: 700; color: var(--text-cream);">Marcus Jenkins</div>
-                            <div style="font-size: 0.8rem; color: var(--text-dim);">Verified Customer • Order #CHED-7195</div>
-                        </div>
-                    </div>
+                <div style="background: var(--bg-card); padding: 2.2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-color); text-align: center;">
+                    <div style="width: 54px; height: 54px; background: rgba(243, 198, 109, 0.15); color: var(--gold-primary); font-size: 1.6rem; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.4rem auto; font-weight: 800; border: 1px solid var(--gold-border);">3</div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem; color: var(--text-cream);">Track & Savor</h3>
+                    <p style="font-size: 0.92rem; color: var(--text-secondary);">Follow your 5-stage progress indicator in real-time under "My Orders", then enjoy fresh melted cheddar.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Bottom CTA Banner -->
-    <section style="padding: 5rem 0; background: radial-gradient(circle, rgba(255, 153, 0, 0.18) 0%, rgba(10, 11, 14, 0.95) 70%); text-align: center;">
+    <section style="padding: 5rem 0; background: radial-gradient(circle, rgba(243, 198, 109, 0.12) 0%, rgba(8, 8, 7, 0.98) 70%); text-align: center;">
         <div class="container container-narrow">
-            <h2 style="margin-bottom: 1.2rem;">Ready to Taste the Cheddar Miracle?</h2>
-            <p style="color: var(--text-cream-muted); font-size: 1.15rem; margin-bottom: 2.2rem;">
-                Browse our menu, customize your feast, and follow your order in real time.
+            <h2 style="font-family: var(--font-heading); font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 1.2rem; color: var(--text-cream);">
+                Ready to Experience The Cheddarloin?
+            </h2>
+            <p style="color: var(--text-secondary); font-size: 1.15rem; margin-bottom: 2.2rem; max-width: 580px; margin-left: auto; margin-right: auto;">
+                Handcrafted smashed Angus patties, golden fries, and our signature molten cheddar drizzle.
             </p>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="{{ route('menu') }}" class="btn btn-primary btn-lg">Explore Menu</a>
-                <a href="{{ route('order.track') }}" class="btn btn-secondary btn-lg">Track Existing Order</a>
+                <a href="#menu" class="btn btn-primary btn-lg" style="border-radius: var(--radius-full);">Explore Menu</a>
+                <a href="{{ route('orders') }}" class="btn btn-secondary btn-lg" style="border-radius: var(--radius-full);">Track My Order</a>
             </div>
         </div>
     </section>

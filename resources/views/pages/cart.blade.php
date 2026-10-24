@@ -76,22 +76,22 @@
 
                     <div class="summary-row">
                         <span>Subtotal</span>
-                        <span id="summary-subtotal">$0.00</span>
+                        <span id="summary-subtotal">0.00 Birr</span>
                     </div>
 
                     <div class="summary-row" id="summary-delivery-row">
                         <span>Delivery Fee</span>
-                        <span id="summary-delivery-fee">${{ number_format($deliveryFee, 2) }}</span>
+                        <span id="summary-delivery-fee">{{ number_format($deliveryFee, 2) }} Birr</span>
                     </div>
 
-                    <div class="summary-row">
+                    <div class="summary-row" id="summary-tax-row" style="display: none;">
                         <span>Estimated Tax ({{ $taxRate }}%)</span>
-                        <span id="summary-tax">$0.00</span>
+                        <span id="summary-tax">0.00 Birr</span>
                     </div>
 
                     <div class="summary-row total-row">
-                        <span>Estimated Total</span>
-                        <span id="summary-total">$0.00</span>
+                        <span>Order Total</span>
+                        <span id="summary-total">0.00 Birr</span>
                     </div>
 
                     <div style="margin-top: 2rem;">
@@ -139,21 +139,21 @@ document.addEventListener('DOMContentLoaded', () => {
         let html = '';
         items.forEach(item => {
             const optionsText = (item.options && item.options.length > 0)
-                ? item.options.map(o => `${o.choice} (+$${parseFloat(o.price).toFixed(2)})`).join(', ')
+                ? item.options.map(o => `${o.choice} (+${Cart.formatPrice(o.price)})`).join(', ')
                 : '';
 
             html += `
                 <tr>
                     <td>
                         <div class="cart-product-cell">
-                            <img src="${item.image_url || 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=150&q=80'}" class="cart-thumb" alt="${item.name}">
+                            <img src="${item.image_url || '/assets/images/hero-burger.jpg'}" class="cart-thumb" alt="${item.name}">
                             <div>
                                 <div class="cart-item-title">${item.name}</div>
                                 ${optionsText ? `<div class="cart-item-options">${optionsText}</div>` : ''}
                             </div>
                         </div>
                     </td>
-                    <td style="font-weight: 600; color: var(--gold-bright);">$${parseFloat(item.unit_price).toFixed(2)}</td>
+                    <td style="font-weight: 600; color: var(--gold-bright);">${Cart.formatPrice(item.unit_price)}</td>
                     <td>
                         <div class="qty-control">
                             <button type="button" class="qty-btn" onclick="updateQty(${item.product_id}, '${item.options_signature}', ${item.quantity - 1})">-</button>
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <button type="button" class="qty-btn" onclick="updateQty(${item.product_id}, '${item.options_signature}', ${item.quantity + 1})">+</button>
                         </div>
                     </td>
-                    <td style="font-weight: 700; color: var(--text-cream);">$${parseFloat(item.subtotal).toFixed(2)}</td>
+                    <td style="font-weight: 700; color: var(--text-cream);">${Cart.formatPrice(item.subtotal)}</td>
                     <td>
                         <button type="button" onclick="removeItem(${item.product_id}, '${item.options_signature}')" style="background: transparent; border: none; color: var(--danger); font-size: 1.1rem; cursor: pointer;" title="Remove">✕</button>
                     </td>
@@ -175,13 +175,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const subtotal = Cart.getSubtotal();
         const isDelivery = deliveryRadio.checked;
         const currentDeliveryFee = isDelivery ? deliveryFeeDefault : 0.00;
-        const tax = Math.round(subtotal * (taxRatePercent / 100) * 100) / 100;
-        const total = subtotal + currentDeliveryFee + tax;
+        const total = subtotal + currentDeliveryFee;
 
-        subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-        deliveryFeeEl.textContent = isDelivery ? `$${deliveryFeeDefault.toFixed(2)}` : 'FREE';
-        taxEl.textContent = `$${tax.toFixed(2)}`;
-        totalEl.textContent = `$${total.toFixed(2)}`;
+        subtotalEl.textContent = Cart.formatPrice(subtotal);
+        deliveryFeeEl.textContent = isDelivery ? Cart.formatPrice(deliveryFeeDefault) : 'FREE';
+        totalEl.textContent = Cart.formatPrice(total);
     }
 
     window.updateQty = (id, sig, qty) => {

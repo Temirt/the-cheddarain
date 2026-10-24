@@ -84,20 +84,20 @@
                             <div>
                                 <strong style="font-size: 1.1rem; color: var(--text-cream);">{{ $item->quantity }}x {{ $item->product_name }}</strong>
                                 <div style="font-size: 0.85rem; color: var(--gold-bright); margin-top: 0.2rem;">
-                                    Unit Price: ${{ number_format($item->unit_price, 2) }}
+                                    Unit Price: {{ number_format($item->unit_price, 2) }} Birr
                                 </div>
                                 @if($item->selected_options && count($item->selected_options) > 0)
                                     <div style="margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.4rem;">
                                         @foreach($item->selected_options as $opt)
                                             <span class="badge badge-gold" style="font-size: 0.72rem;">
-                                                {{ $opt['option'] }}: {{ $opt['choice'] }} {{ $opt['price'] > 0 ? '(+$' . number_format($opt['price'], 2) . ')' : '' }}
+                                                {{ $opt['option'] }}: {{ $opt['choice'] }} {{ $opt['price'] > 0 ? '(+' . number_format($opt['price'], 2) . ' Birr)' : '' }}
                                             </span>
                                         @endforeach
                                     </div>
                                 @endif
                             </div>
                             <div style="font-size: 1.2rem; font-weight: 800; color: var(--text-cream);">
-                                ${{ number_format($item->subtotal, 2) }}
+                                {{ number_format($item->subtotal, 2) }} Birr
                             </div>
                         </div>
                     @endforeach
@@ -107,19 +107,15 @@
                 <div style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.95rem;">
                     <div style="display: flex; justify-content: space-between;">
                         <span style="color: var(--text-cream-muted);">Items Subtotal:</span>
-                        <span>${{ number_format($order->subtotal, 2) }}</span>
+                        <span>{{ number_format($order->subtotal, 2) }} Birr</span>
                     </div>
                     <div style="display: flex; justify-content: space-between;">
                         <span style="color: var(--text-cream-muted);">Delivery Fee:</span>
-                        <span>${{ number_format($order->delivery_fee, 2) }}</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between;">
-                        <span style="color: var(--text-cream-muted);">Estimated Tax:</span>
-                        <span>${{ number_format($order->tax, 2) }}</span>
+                        <span>{{ number_format($order->delivery_fee, 2) }} Birr</span>
                     </div>
                     <div style="display: flex; justify-content: space-between; font-size: 1.35rem; font-weight: 800; color: var(--gold-bright); padding-top: 0.75rem; border-top: 1px solid var(--border-subtle); margin-top: 0.5rem;">
                         <span>Grand Total:</span>
-                        <span>${{ number_format($order->total, 2) }}</span>
+                        <span>{{ number_format($order->total, 2) }} Birr</span>
                     </div>
                 </div>
             </div>

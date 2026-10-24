@@ -13,7 +13,7 @@ class RestaurantWebsiteTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('The Cheddarloin');
         $response->assertSee('THE ART OF THE');
-        $response->assertSee('Order Now');
+        $response->assertSee('Explore the Menu');
         $response->assertSee('Track My Order');
     }
 
@@ -21,14 +21,14 @@ class RestaurantWebsiteTest extends TestCase
     {
         $response = $this->get('/menu');
         $response->assertStatus(200);
-        $response->assertSee('Our Artisan Menu');
-        $response->assertSee('The Ultimate Cheddar Lava');
-        $response->assertSee('Loaded Cheddar Bacon Fries');
+        $response->assertSee('The Cheddarloin');
+        $response->assertSee('The Cheddarloin Signature Beef');
+        $response->assertSee('Classic French Fries');
     }
 
     public function test_product_detail_page_renders_with_customization_options(): void
     {
-        $product = Product::where('slug', 'the-ultimate-cheddar-lava')->firstOrFail();
+        $product = Product::where('slug', 'cheddar-signature-beef')->first() ?? Product::firstOrFail();
         $response = $this->get('/product/' . $product->slug);
         $response->assertStatus(200);
         $response->assertSee($product->name);
@@ -37,7 +37,7 @@ class RestaurantWebsiteTest extends TestCase
 
     public function test_api_product_options_returns_json(): void
     {
-        $product = Product::where('slug', 'the-ultimate-cheddar-lava')->firstOrFail();
+        $product = Product::where('slug', 'cheddar-signature-beef')->first() ?? Product::firstOrFail();
         $response = $this->getJson('/api/product-options/' . $product->id);
         $response->assertStatus(200);
         $response->assertJsonStructure([

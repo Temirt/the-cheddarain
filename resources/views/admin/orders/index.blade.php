@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Manage Orders — The Cheddarain Admin')
+@section('title', 'Manage Orders — The Cheddarloin Admin')
 
 @section('admin_content')
 <div>
@@ -75,7 +75,7 @@
                             </span>
                         </td>
                         <td style="font-size: 0.88rem;">{{ $order->items->sum('quantity') }} items</td>
-                        <td style="font-weight: 700; color: var(--gold-bright);">${{ number_format($order->total, 2) }}</td>
+                        <td style="font-weight: 700; color: var(--gold-bright);">{{ number_format($order->total, 2) }} Birr</td>
                         <td>
                             <span style="font-size: 0.82rem; text-transform: uppercase; color: {{ $order->payment_status === 'paid' ? 'var(--success)' : 'var(--warning)' }};">
                                 {{ $order->payment_method }} ({{ $order->payment_status }})

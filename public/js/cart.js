@@ -95,12 +95,70 @@ const Cart = {
         return this.getItems().reduce((sum, item) => sum + (parseFloat(item.subtotal) || 0), 0);
     },
 
+    formatPrice(amount) {
+        const currency = window.RESTAURANT_CURRENCY || 'Birr';
+        return `${Number(amount).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} ${currency}`;
+    },
+
+    getMyOrders() {
+        try {
+            const raw = localStorage.getItem('cheddarloin_my_orders');
+            return raw ? JSON.parse(raw) : [];
+        } catch (e) {
+            return [];
+        }
+    },
+
+    saveMyOrder(order) {
+        try {
+            const orders = this.getMyOrders();
+            const ref = typeof order === 'string' ? order : order.reference;
+            const existingIndex = orders.findIndex(o => (typeof o === 'string' ? o : o.reference) === ref);
+            const entry = typeof order === 'string' ? { reference: order, date: new Date().toISOString() } : order;
+            if (existingIndex > -1) {
+                orders[existingIndex] = entry;
+            } else {
+                orders.unshift(entry);
+            }
+            localStorage.setItem('cheddarloin_my_orders', JSON.stringify(orders));
+            this.updateBadges();
+        } catch (e) {
+            console.error('Error saving order to localStorage', e);
+        }
+    },
+
     updateBadges() {
         const count = this.getCount();
+        const subtotal = this.getSubtotal();
+        const formattedTotal = this.formatPrice(subtotal);
+
+        // Header cart count badges
         document.querySelectorAll('.cart-count-badge').forEach(badge => {
             badge.textContent = count;
-            badge.style.display = count > 0 ? 'flex' : 'none';
+            badge.style.display = count > 0 ? 'inline-flex' : 'none';
         });
+
+        // My Orders count badges
+        const myOrders = this.getMyOrders();
+        const ordersCount = myOrders.length;
+        const navOrdersBadge = document.getElementById('nav-orders-count');
+        if (navOrdersBadge) {
+            navOrdersBadge.textContent = `${ordersCount} ${ordersCount === 1 ? 'order' : 'orders'}`;
+        }
+        const mobileOrdersCount = document.getElementById('mobile-orders-count');
+        if (mobileOrdersCount) {
+            mobileOrdersCount.textContent = ordersCount;
+        }
+
+        // Mobile Bottom Summary Bar
+        const bottomQty = document.getElementById('bottom-cart-qty');
+        const bottomTotal = document.getElementById('bottom-cart-total');
+        if (bottomQty) {
+            bottomQty.textContent = `${count} ${count === 1 ? 'item' : 'items'}`;
+        }
+        if (bottomTotal) {
+            bottomTotal.textContent = formattedTotal;
+        }
     },
 
     showToast(message) {
@@ -110,15 +168,15 @@ const Cart = {
             toast.id = 'site-toast';
             toast.style.cssText = `
                 position: fixed;
-                bottom: 25px;
-                right: 25px;
-                background: linear-gradient(135deg, #ff9900 0%, #e85d04 100%);
-                color: #000;
+                bottom: 80px;
+                right: 20px;
+                background: linear-gradient(135deg, #F3C66D 0%, #D9B36A 100%);
+                color: #080807;
                 font-weight: 700;
-                font-family: var(--font-heading);
-                padding: 1rem 1.6rem;
+                font-family: var(--font-body);
+                padding: 0.9rem 1.5rem;
                 border-radius: 9999px;
-                box-shadow: 0 8px 25px rgba(255, 153, 0, 0.4);
+                box-shadow: 0 8px 25px rgba(243, 198, 109, 0.45);
                 z-index: 9999;
                 transform: translateY(100px);
                 opacity: 0;

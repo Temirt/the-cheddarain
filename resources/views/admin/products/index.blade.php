@@ -153,7 +153,7 @@
                                 </span>
                             </td>
                             <td style="font-weight: 800; color: var(--gold-bright); font-size: 1.1rem; white-space: nowrap;">
-                                ${{ number_format($product->price, 2) }}
+                                {{ $product->formatted_price }}
                             </td>
                             <td style="font-size: 0.88rem; color: var(--text-cream-soft); white-space: nowrap;">
                                 ⏱️ {{ $product->prep_time_minutes }} mins
@@ -211,7 +211,7 @@
                                     {{ $product->name }}
                                 </h3>
                                 <div style="font-weight: 800; color: var(--gold-bright); font-size: 1.15rem; white-space: nowrap;">
-                                    ${{ number_format($product->price, 2) }}
+                                    {{ $product->formatted_price }}
                                 </div>
                             </div>
 

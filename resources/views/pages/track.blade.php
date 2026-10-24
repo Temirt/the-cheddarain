@@ -204,14 +204,14 @@
                                     <div style="font-size: 0.85rem; color: var(--text-cream-muted); margin-top: 0.2rem;">
                                         @foreach($item->selected_options as $opt)
                                             <span class="badge badge-gold" style="font-size: 0.7rem; margin-right: 0.3rem;">
-                                                {{ $opt['choice'] }} {{ $opt['price'] > 0 ? '(+$' . number_format($opt['price'], 2) . ')' : '' }}
+                                                {{ $opt['choice'] }} {{ $opt['price'] > 0 ? '(+' . number_format($opt['price'], 2) . ' Birr)' : '' }}
                                             </span>
                                         @endforeach
                                     </div>
                                 @endif
                             </div>
                             <div style="font-weight: 700; color: var(--gold-bright); font-size: 1.1rem;">
-                                ${{ number_format($item->subtotal, 2) }}
+                                {{ number_format($item->subtotal, 2) }} Birr
                             </div>
                         </div>
                     @endforeach
@@ -220,32 +220,28 @@
                 <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.95rem; margin-bottom: 1.5rem;">
                     <div style="display: flex; justify-content: space-between;">
                         <span style="color: var(--text-cream-muted);">Subtotal</span>
-                        <span>${{ number_format($order->subtotal, 2) }}</span>
+                        <span>{{ number_format($order->subtotal, 2) }} Birr</span>
                     </div>
                     <div style="display: flex; justify-content: space-between;">
                         <span style="color: var(--text-cream-muted);">Fulfillment</span>
-                        <span>{{ ucfirst($order->fulfillment_type) }} ({{ $order->delivery_fee > 0 ? '$' . number_format($order->delivery_fee, 2) : 'FREE' }})</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between;">
-                        <span style="color: var(--text-cream-muted);">Tax</span>
-                        <span>${{ number_format($order->tax, 2) }}</span>
+                        <span>{{ ucfirst($order->fulfillment_type) }} ({{ $order->delivery_fee > 0 ? number_format($order->delivery_fee, 2) . ' Birr' : 'FREE' }})</span>
                     </div>
                     <div style="display: flex; justify-content: space-between; font-size: 1.35rem; font-weight: 800; color: var(--gold-bright); padding-top: 0.75rem; border-top: 1px solid var(--border-subtle); margin-top: 0.5rem;">
                         <span>Total Due</span>
-                        <span>${{ number_format($order->total, 2) }}</span>
+                        <span>{{ number_format($order->total, 2) }} Birr</span>
                     </div>
                 </div>
 
                 <!-- In-Person Payment Reminder Card -->
-                <div style="background: rgba(255, 153, 0, 0.1); border: 1px dashed var(--cheddar-primary); border-radius: var(--radius-md); padding: 1.1rem 1.3rem; margin-bottom: 1.5rem;">
+                <div style="background: rgba(243, 198, 109, 0.1); border: 1px dashed var(--gold-border); border-radius: var(--radius-md); padding: 1.1rem 1.3rem; margin-bottom: 1.5rem;">
                     <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--gold-bright); font-weight: 700; font-size: 0.95rem; margin-bottom: 0.4rem;">
                         <span>💵</span> Pay in Person With Order ID
                     </div>
                     <p style="font-size: 0.88rem; color: var(--text-cream-soft); margin: 0; line-height: 1.5;">
                         @if($order->fulfillment_type === 'pickup')
-                            Bring your Order Reference <strong style="color: var(--cheddar-bright);">#{{ $order->order_reference }}</strong> to the pickup counter to pay ${{ number_format($order->total, 2) }} via Cash, Card, or Contactless.
+                            Bring your Order Reference <strong style="color: var(--cheddar-bright);">#{{ $order->order_reference }}</strong> to the pickup counter to settle {{ number_format($order->total, 2) }} Birr in store.
                         @else
-                            Present your Order Reference <strong style="color: var(--cheddar-bright);">#{{ $order->order_reference }}</strong> to your delivery courier to pay ${{ number_format($order->total, 2) }} in cash upon arrival.
+                            Present your Order Reference <strong style="color: var(--cheddar-bright);">#{{ $order->order_reference }}</strong> to your delivery courier to pay {{ number_format($order->total, 2) }} Birr in cash upon arrival.
                         @endif
                     </p>
                 </div>

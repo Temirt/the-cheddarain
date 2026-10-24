@@ -29,7 +29,7 @@
 
         <div class="metric-card">
             <div class="metric-title">Today's Revenue</div>
-            <div class="metric-value" style="color: var(--gold-bright);">${{ number_format($metrics['today_revenue'], 2) }}</div>
+            <div class="metric-value" style="color: var(--gold-bright);">{{ number_format($metrics['today_revenue'], 2) }} Birr</div>
         </div>
 
         <div class="metric-card">
@@ -177,7 +177,7 @@
                                     {{ ucfirst($order->fulfillment_type) }}
                                 </span>
                             </td>
-                            <td style="font-weight: 700; color: var(--gold-bright);">${{ number_format($order->total, 2) }}</td>
+                            <td style="font-weight: 700; color: var(--gold-bright);">{{ number_format($order->total, 2) }} Birr</td>
                             <td>
                                 <span class="badge {{ $order->status === 'delivered' ? 'badge-success' : ($order->status === 'cancelled' ? 'badge-danger' : 'badge-cheddar') }}" style="font-size: 0.75rem;">
                                     {{ $order->status_label }}

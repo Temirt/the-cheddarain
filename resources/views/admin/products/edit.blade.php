@@ -55,7 +55,7 @@
 
                 <!-- Price -->
                 <div class="form-group">
-                    <label class="form-label" for="price">Price ($) *</label>
+                    <label class="form-label" for="price">Price (Birr / ETB) *</label>
                     <input type="number" step="0.01" min="0" name="price" id="price" class="form-input" required value="{{ old('price', $product->price) }}">
                 </div>
 

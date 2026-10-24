@@ -1310,3 +1310,196 @@
         display: none !important;
     }
 }
+
+/* ==========================================================================
+   Mobile Fixed Bottom Order Summary Bar & Menu Improvements
+   ========================================================================== */
+.mobile-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 998;
+    background: rgba(17, 16, 14, 0.96);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid var(--border-color);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.bottom-bar-orders {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.9rem;
+    border-radius: var(--radius-full);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-cream);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.bottom-bar-orders:hover {
+    border-color: var(--gold-border);
+    color: var(--gold-primary);
+}
+
+.bottom-bar-orders .badge {
+    background: var(--gold-primary);
+    color: #080807;
+    font-size: 0.72rem;
+    padding: 0.15rem 0.45rem;
+    border-radius: var(--radius-full);
+    font-weight: 800;
+}
+
+.bottom-bar-cart {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #F3C66D 0%, #D9B36A 100%);
+    color: #080807;
+    padding: 0.7rem 1.1rem;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.88rem;
+    box-shadow: 0 4px 16px rgba(243, 198, 109, 0.3);
+    transition: all 0.2s ease;
+}
+
+.bottom-bar-cart:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(243, 198, 109, 0.45);
+}
+
+.bottom-cart-info {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.bottom-cart-total {
+    font-weight: 800;
+}
+
+.bottom-cart-cta {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 800;
+}
+
+@media (min-width: 901px) {
+    .mobile-bottom-bar {
+        display: none !important;
+    }
+}
+
+/* Nav Orders Button */
+.btn-orders-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: var(--radius-full);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-cream);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-orders-nav:hover {
+    border-color: var(--gold-border);
+    color: var(--gold-primary);
+}
+
+.btn-orders-nav .orders-count-badge {
+    background: rgba(243, 198, 109, 0.15);
+    color: var(--gold-primary);
+    padding: 0.15rem 0.55rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: 1px solid rgba(243, 198, 109, 0.3);
+}
+
+/* Menu Category Tabs & Add+ Button */
+.menu-category-tabs {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding: 0.5rem 0 1.5rem 0;
+    margin-bottom: 2rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.menu-category-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.category-filter-btn {
+    padding: 0.65rem 1.4rem;
+    border-radius: var(--radius-full);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-cream-soft);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.92rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+
+.category-filter-btn:hover {
+    border-color: var(--gold-border);
+    color: var(--gold-primary);
+}
+
+.category-filter-btn.active {
+    background: var(--gold-primary);
+    color: #080807;
+    border-color: var(--gold-primary);
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(243, 198, 109, 0.35);
+}
+
+.btn-add {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: var(--radius-full);
+    background: transparent;
+    border: 1px solid var(--gold-border);
+    color: var(--gold-primary);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+}
+
+.btn-add:hover {
+    background: var(--gold-primary);
+    color: #080807;
+    box-shadow: 0 4px 14px rgba(243, 198, 109, 0.35);
+    transform: translateY(-2px);
+}
+

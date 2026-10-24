@@ -56,14 +56,14 @@
                     📍 <strong>Pickup Counter Instructions:</strong> Head to <strong>The Cheddarloin</strong> pickup counter and present your Order Reference: <strong style="color: var(--cheddar-bright); font-size: 1.15rem; font-family: var(--font-heading);">#{{ $order->order_reference }}</strong>.
                 </p>
                 <p style="margin: 0;">
-                    💳 You will pay your total of <strong style="color: var(--gold-bright); font-size: 1.05rem;">${{ number_format($order->total, 2) }}</strong> at the counter using <strong>Cash, Card, or Contactless (Apple/Google Pay)</strong>.
+                    💳 You will pay your total of <strong style="color: var(--gold-bright); font-size: 1.05rem;">{{ number_format($order->total, 2) }} Birr</strong> at the counter using <strong>Cash or In-Store Payment</strong>.
                 </p>
             @else
                 <p style="margin-bottom: 0.6rem;">
                     🛵 <strong>Delivery Instructions:</strong> When your delivery courier arrives, simply present or state your Order Reference: <strong style="color: var(--cheddar-bright); font-size: 1.15rem; font-family: var(--font-heading);">#{{ $order->order_reference }}</strong>.
                 </p>
                 <p style="margin: 0;">
-                    💵 Hand the exact or approximate cash amount of <strong style="color: var(--gold-bright); font-size: 1.05rem;">${{ number_format($order->total, 2) }}</strong> directly to the delivery courier.
+                    💵 Hand the exact or approximate cash amount of <strong style="color: var(--gold-bright); font-size: 1.05rem;">{{ number_format($order->total, 2) }} Birr</strong> directly to the delivery courier.
                 </p>
             @endif
         </div>
@@ -86,7 +86,7 @@
                             </div>
                         @endif
                     </div>
-                    <div style="font-weight: 700; color: var(--gold-bright);">${{ number_format($item->subtotal, 2) }}</div>
+                    <div style="font-weight: 700; color: var(--gold-bright);">{{ number_format($item->subtotal, 2) }} Birr</div>
                 </div>
             @endforeach
         </div>
@@ -94,19 +94,15 @@
         <div style="border-top: 1px solid var(--border-subtle); padding-top: 1rem; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.92rem;">
             <div style="display: flex; justify-content: space-between;">
                 <span style="color: var(--text-cream-muted);">Subtotal:</span>
-                <span>${{ number_format($order->subtotal, 2) }}</span>
+                <span>{{ number_format($order->subtotal, 2) }} Birr</span>
             </div>
             <div style="display: flex; justify-content: space-between;">
                 <span style="color: var(--text-cream-muted);">Fulfillment:</span>
-                <span>{{ ucfirst($order->fulfillment_type) }} ({{ $order->delivery_fee > 0 ? '$' . number_format($order->delivery_fee, 2) : 'FREE' }})</span>
-            </div>
-            <div style="display: flex; justify-content: space-between;">
-                <span style="color: var(--text-cream-muted);">Tax:</span>
-                <span>${{ number_format($order->tax, 2) }}</span>
+                <span>{{ ucfirst($order->fulfillment_type) }} ({{ $order->delivery_fee > 0 ? number_format($order->delivery_fee, 2) . ' Birr' : 'FREE' }})</span>
             </div>
             <div style="display: flex; justify-content: space-between; font-size: 1.25rem; font-weight: 800; color: var(--gold-bright); margin-top: 0.5rem; padding-top: 0.75rem; border-top: 1px solid var(--border-subtle);">
                 <span>Total:</span>
-                <span>${{ number_format($order->total, 2) }}</span>
+                <span>{{ number_format($order->total, 2) }} Birr</span>
             </div>
         </div>
     </div>
@@ -115,6 +111,14 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+    // Save this order reference in localStorage for "My Orders"
+    Cart.saveMyOrder({
+        reference: '{{ $order->order_reference }}',
+        date: '{{ $order->created_at->format('M d, Y H:i') }}',
+        total: '{{ number_format($order->total, 2) }} Birr',
+        status: '{{ $order->status }}'
+    });
+
     // Clear client-side cart after successful order placement
     Cart.clear();
 });

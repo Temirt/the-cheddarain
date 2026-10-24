@@ -105,7 +105,7 @@
 
                             <div class="form-group">
                                 <label class="form-label" for="delivery_city">City *</label>
-                                <input type="text" name="delivery_city" id="delivery_city" class="form-input" value="{{ old('delivery_city', 'Springfield') }}" placeholder="City">
+                                <input type="text" name="delivery_city" id="delivery_city" class="form-input" value="{{ old('delivery_city', 'Addis Ababa') }}" placeholder="City">
                             </div>
                         </div>
 
@@ -170,22 +170,22 @@
 
                     <div class="summary-row">
                         <span>Items Subtotal</span>
-                        <span id="co-subtotal">$0.00</span>
+                        <span id="co-subtotal">0.00 Birr</span>
                     </div>
 
                     <div class="summary-row" id="co-delivery-row">
                         <span>Delivery Fee</span>
-                        <span id="co-delivery-fee">${{ number_format($deliveryFee, 2) }}</span>
+                        <span id="co-delivery-fee">{{ number_format($deliveryFee, 2) }} Birr</span>
                     </div>
 
-                    <div class="summary-row">
+                    <div class="summary-row" id="co-tax-row" style="display: none;">
                         <span>Tax ({{ $taxRate }}%)</span>
-                        <span id="co-tax">$0.00</span>
+                        <span id="co-tax">0.00 Birr</span>
                     </div>
 
                     <div class="summary-row total-row">
-                        <span>Grand Total</span>
-                        <span id="co-total">$0.00</span>
+                        <span>Order Total</span>
+                        <span id="co-total">0.00 Birr</span>
                     </div>
 
                     <div style="margin-top: 2rem;">
@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <strong>${item.quantity}x ${item.name}</strong>
                     ${optionsText ? `<div style="font-size: 0.78rem; color: var(--text-cream-muted);">${optionsText}</div>` : ''}
                 </div>
-                <div style="font-weight: 700; color: var(--gold-bright);">$${parseFloat(item.subtotal).toFixed(2)}</div>
+                <div style="font-weight: 700; color: var(--gold-bright);">${Cart.formatPrice(item.subtotal)}</div>
             </div>
         `;
 
@@ -276,13 +276,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const subtotal = Cart.getSubtotal();
         const isDelivery = deliveryRadio.checked;
         const currentDeliveryFee = isDelivery ? deliveryFeeDefault : 0.00;
-        const tax = Math.round(subtotal * (taxRatePercent / 100) * 100) / 100;
-        const total = subtotal + currentDeliveryFee + tax;
+        const total = subtotal + currentDeliveryFee;
 
-        subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-        deliveryFeeEl.textContent = isDelivery ? `$${deliveryFeeDefault.toFixed(2)}` : 'FREE';
-        taxEl.textContent = `$${tax.toFixed(2)}`;
-        totalEl.textContent = `$${total.toFixed(2)}`;
+        subtotalEl.textContent = Cart.formatPrice(subtotal);
+        deliveryFeeEl.textContent = isDelivery ? Cart.formatPrice(deliveryFeeDefault) : 'FREE';
+        totalEl.textContent = Cart.formatPrice(total);
 
         deliveryAddressContainer.style.display = isDelivery ? 'flex' : 'none';
         const addressInput = document.getElementById('delivery_address');

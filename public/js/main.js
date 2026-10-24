@@ -42,6 +42,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Client-side Menu Category Filter and Live Search
     const searchInput = document.getElementById('menu-search-input');
     const productCards = document.querySelectorAll('.product-card[data-category]');
+    const categoryFilterBtns = document.querySelectorAll('.category-filter-btn');
+
+    if (categoryFilterBtns.length > 0 && productCards.length > 0) {
+        categoryFilterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                categoryFilterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const selectedCategory = btn.dataset.category || 'all';
+                productCards.forEach(card => {
+                    const cardCategory = card.dataset.category;
+                    if (selectedCategory === 'all' || cardCategory === selectedCategory) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
 
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
@@ -80,8 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Quick Add button (for items without required customizations)
-    document.querySelectorAll('.quick-add-btn').forEach(btn => {
+    // Quick Add button (for items without required customizations or direct Add + button)
+    document.querySelectorAll('.quick-add-btn, .btn-add').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             const product = {
@@ -114,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             modalTitle.textContent = data.name;
             modalDesc.textContent = data.description;
-            modalBasePrice.textContent = `$${data.price.toFixed(2)}`;
+            modalBasePrice.textContent = Cart.formatPrice(data.price);
 
             let html = '';
             let currentOptionsTotal = 0;
@@ -134,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const inputType = isRadio ? 'radio' : 'checkbox';
                         const inputName = `opt_${opt.id}`;
                         const isChecked = val.is_default ? 'checked' : '';
-                        const priceLabel = parseFloat(val.price) > 0 ? `+$${parseFloat(val.price).toFixed(2)}` : 'Free';
+                        const priceLabel = parseFloat(val.price) > 0 ? `+${Cart.formatPrice(val.price)}` : 'Free';
 
                         html += `
                             <label class="option-item-row">
@@ -162,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     optionsAddon += parseFloat(input.dataset.price) || 0;
                 });
                 const finalTotal = data.price + optionsAddon;
-                modalTotalBtn.textContent = `Add to Cart • $${finalTotal.toFixed(2)}`;
+                modalTotalBtn.textContent = `Add to Cart • ${Cart.formatPrice(finalTotal)}`;
             };
 
             // Listen to option changes

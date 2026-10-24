@@ -108,6 +108,7 @@ class CheckoutController extends Controller
 
             // Create Order
             $order = Order::create([
+                'order_number' => $reference,
                 'order_reference' => $reference,
                 'customer_name' => $validated['customer_name'],
                 'customer_email' => $validated['customer_email'],

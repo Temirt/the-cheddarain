@@ -51,7 +51,7 @@
 
             <div style="display: flex; align-items: baseline; gap: 1rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-subtle); margin-bottom: 2rem;">
                 <span style="font-size: 0.9rem; color: var(--text-cream-muted);">Base Price:</span>
-                <span style="font-size: 2rem; font-weight: 800; font-family: var(--font-heading); color: var(--gold-bright);" id="detail-base-price">${{ number_format($product->price, 2) }}</span>
+                <span style="font-size: 2rem; font-weight: 800; font-family: var(--font-heading); color: var(--gold-bright);" id="detail-base-price">{{ number_format($product->price, 2) }} Birr</span>
             </div>
 
             <!-- Customizations -->
@@ -84,7 +84,7 @@
                                     <span>{{ $val->name }}</span>
                                 </div>
                                 <span class="badge badge-gold" style="font-size: 0.75rem;">
-                                    {{ $val->price > 0 ? '+$' . number_format($val->price, 2) : 'Included' }}
+                                    {{ $val->price > 0 ? '(+' . number_format($val->price, 2) . ' Birr)' : 'Included' }}
                                 </span>
                             </label>
                         @endforeach
@@ -100,7 +100,7 @@
                     </div>
 
                     <button type="button" class="btn btn-primary btn-lg" id="detail-add-btn" style="flex: 1;">
-                        Add to Cart • $<span id="detail-total-price">{{ number_format($product->price, 2) }}</span>
+                        Add to Cart • <span id="detail-total-price">{{ number_format($product->price, 2) }} Birr</span>
                     </button>
                 </div>
             </form>
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         const unit = basePrice + optionsPrice;
         const total = unit * quantity;
-        totalEl.textContent = total.toFixed(2);
+        totalEl.textContent = Cart.formatPrice(total);
         return { unit, total };
     }
 

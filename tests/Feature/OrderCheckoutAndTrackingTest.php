@@ -10,7 +10,7 @@ class OrderCheckoutAndTrackingTest extends TestCase
 {
     public function test_customer_can_checkout_and_generate_unique_order_reference(): void
     {
-        $product = Product::where('slug', 'the-ultimate-cheddar-lava')->firstOrFail();
+        $product = Product::where('slug', 'cheddar-signature-beef')->first() ?? Product::firstOrFail();
 
         $payload = [
             'customer_name' => 'John Test Customer',

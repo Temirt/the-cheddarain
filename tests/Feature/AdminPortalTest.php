@@ -185,4 +185,87 @@ class AdminPortalTest extends TestCase
             'id' => $product->id,
         ]);
     }
+
+    public function test_admin_can_view_and_manage_categories(): void
+    {
+        $admin = User::where('role', 'admin')->firstOrFail();
+        $response = $this->actingAs($admin)->get('/admin/categories');
+        $response->assertStatus(200);
+        $response->assertSee('Menu Categories');
+        $response->assertSee('Burgers');
+        $response->assertSee('Sides');
+        $response->assertSee('Drinks');
+        $response->assertSee('Meals');
+    }
+
+    public function test_admin_can_create_category(): void
+    {
+        $admin = User::where('role', 'admin')->firstOrFail();
+        $response = $this->actingAs($admin)->post('/admin/categories', [
+            'name' => 'Desserts & Sweets',
+            'slug' => 'desserts-sweets',
+            'icon' => '🍰',
+            'description' => 'Molten lava cakes and artisan milkshakes.',
+            'is_active' => '1',
+            'sort_order' => 5,
+        ]);
+
+        $response->assertStatus(302);
+        $response->assertRedirect(route('admin.categories.index'));
+
+        $this->assertDatabaseHas('categories', [
+            'slug' => 'desserts-sweets',
+            'name' => 'Desserts & Sweets',
+        ]);
+    }
+
+    public function test_admin_can_update_category(): void
+    {
+        $admin = User::where('role', 'admin')->firstOrFail();
+        $category = Category::create([
+            'name' => 'Special Editions',
+            'slug' => 'special-editions',
+            'icon' => '⭐',
+            'is_active' => true,
+            'sort_order' => 6,
+        ]);
+
+        $response = $this->actingAs($admin)->put('/admin/categories/' . $category->id, [
+            'name' => 'Limited Editions',
+            'slug' => 'limited-editions',
+            'icon' => '🔥',
+            'description' => 'Seasonal menu drops.',
+            'is_active' => '1',
+            'sort_order' => 6,
+        ]);
+
+        $response->assertStatus(302);
+        $response->assertRedirect(route('admin.categories.index'));
+
+        $this->assertDatabaseHas('categories', [
+            'id' => $category->id,
+            'name' => 'Limited Editions',
+            'slug' => 'limited-editions',
+        ]);
+    }
+
+    public function test_admin_can_delete_empty_category(): void
+    {
+        $admin = User::where('role', 'admin')->firstOrFail();
+        $category = Category::create([
+            'name' => 'Temp Category To Delete',
+            'slug' => 'temp-category-delete',
+            'icon' => '🗑️',
+            'is_active' => true,
+            'sort_order' => 99,
+        ]);
+
+        $response = $this->actingAs($admin)->delete('/admin/categories/' . $category->id);
+        $response->assertStatus(302);
+        $response->assertRedirect(route('admin.categories.index'));
+
+        $this->assertDatabaseMissing('categories', [
+            'id' => $category->id,
+        ]);
+    }
 }

@@ -74,6 +74,13 @@
                     </a>
                 </li>
 
+                <li class="admin-nav-item {{ request()->routeIs('admin.categories*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.categories.index') }}">
+                        <span>📑</span>
+                        <span>Categories</span>
+                    </a>
+                </li>
+
                 <li class="admin-nav-item {{ request()->routeIs('admin.settings*') ? 'active' : '' }}">
                     <a href="{{ route('admin.settings.index') }}">
                         <span>⚙️</span>

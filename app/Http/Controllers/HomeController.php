@@ -13,11 +13,11 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::where('is_active', true)->orderBy('sort_order')->get();
-        $featuredProducts = Product::with('category', 'options.values')
-            ->where('is_featured', true)
+        $products = Product::with('category', 'options.values')
             ->where('is_available', true)
-            ->take(8)
+            ->orderBy('sort_order')
             ->get();
+        $featuredProducts = $products->where('is_featured', true)->take(8);
 
         $stats = [
             'total_burgers' => Product::count(),
@@ -26,7 +26,7 @@ class HomeController extends Controller
             'prep_time' => '12-15 min',
         ];
 
-        return view('pages.home', compact('categories', 'featuredProducts', 'stats'));
+        return view('pages.home', compact('categories', 'products', 'featuredProducts', 'stats'));
     }
 
     public function about()
@@ -56,5 +56,15 @@ class HomeController extends Controller
     public function faq()
     {
         return view('pages.faq');
+    }
+
+    public function terms()
+    {
+        return view('pages.terms');
+    }
+
+    public function privacy()
+    {
+        return view('pages.privacy');
     }
 }

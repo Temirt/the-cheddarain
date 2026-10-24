@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
@@ -39,7 +40,9 @@ Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('checkout.process');
 Route::get('/order-confirmation/{reference}', [CheckoutController::class, 'confirmation'])->name('order.confirmation');
 
-// Full Order Tracking System (McDonald's inspired)
+// Full Order Tracking System & My Orders
+Route::get('/orders', [OrderTrackingController::class, 'index'])->name('orders');
+Route::get('/orders/{reference}', [OrderTrackingController::class, 'show'])->name('orders.show');
 Route::get('/track', [OrderTrackingController::class, 'index'])->name('order.track');
 Route::get('/track/{reference}', [OrderTrackingController::class, 'show'])->name('order.track.show');
 Route::post('/track/{reference}/verify', [OrderTrackingController::class, 'verifyPhone'])->name('order.track.verify');
@@ -52,6 +55,8 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/contact/submit', [HomeController::class, 'submitContact'])->name('contact.submit');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
+Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
+Route::get('/privacy', [HomeController::class, 'privacy'])->name('privacy');
 
 /*
 |--------------------------------------------------------------------------
@@ -82,6 +87,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::put('/products/{id}', [AdminProductController::class, 'update'])->name('products.update');
         Route::post('/products/{id}/toggle', [AdminProductController::class, 'toggleAvailability'])->name('products.toggle');
         Route::delete('/products/{id}', [AdminProductController::class, 'destroy'])->name('products.destroy');
+
+        // Menu Categories Management (CRUD)
+        Route::get('/categories', [AdminCategoryController::class, 'index'])->name('categories.index');
+        Route::get('/categories/create', [AdminCategoryController::class, 'create'])->name('categories.create');
+        Route::post('/categories', [AdminCategoryController::class, 'store'])->name('categories.store');
+        Route::get('/categories/{id}/edit', [AdminCategoryController::class, 'edit'])->name('categories.edit');
+        Route::put('/categories/{id}', [AdminCategoryController::class, 'update'])->name('categories.update');
+        Route::delete('/categories/{id}', [AdminCategoryController::class, 'destroy'])->name('categories.destroy');
 
         // Restaurant Operational Settings
         Route::get('/settings', [AdminSettingController::class, 'index'])->name('settings.index');

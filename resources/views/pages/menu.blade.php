@@ -54,21 +54,21 @@
                     <p class="product-desc">{{ $product->description }}</p>
 
                     <div class="product-footer">
-                        <div class="product-price">${{ number_format($product->price, 2) }}</div>
-                        <div>
+                        <div class="product-price">{{ $product->formatted_price }}</div>
+                        <div style="display: flex; gap: 0.5rem; align-items: center;">
                             @if($product->options->count() > 0)
-                                <button type="button" class="btn btn-primary btn-sm open-customize-btn" data-product-id="{{ $product->id }}">
+                                <button type="button" class="btn btn-secondary btn-sm open-customize-btn" data-product-id="{{ $product->id }}">
                                     <span>Customize</span>
                                 </button>
-                            @else
-                                <button type="button" class="btn btn-primary btn-sm quick-add-btn"
-                                        data-product-id="{{ $product->id }}"
-                                        data-product-name="{{ $product->name }}"
-                                        data-product-price="{{ $product->price }}"
-                                        data-product-image="{{ $product->image_url }}">
-                                    <span>+ Add</span>
-                                </button>
                             @endif
+                            <button type="button" class="btn-add"
+                                    data-product-id="{{ $product->id }}"
+                                    data-product-name="{{ $product->name }}"
+                                    data-product-price="{{ $product->price }}"
+                                    data-product-image="{{ $product->image_url }}"
+                                    aria-label="Add {{ $product->name }} to cart">
+                                <span>Add +</span>
+                            </button>
                         </div>
                     </div>
                 </div>

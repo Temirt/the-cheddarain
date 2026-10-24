@@ -12,7 +12,7 @@ class ProductOptionSeeder extends Seeder
     public function run(): void
     {
         $burgers = Product::whereHas('category', function ($q) {
-            $q->whereIn('slug', ['burgers', 'combos-and-meals']);
+            $q->whereIn('slug', ['burgers', 'meals']);
         })->get();
 
         foreach ($burgers as $burger) {
